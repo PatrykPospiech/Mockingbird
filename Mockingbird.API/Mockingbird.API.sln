@@ -1,0 +1,16 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mockingbird.API", "Mockingbird.API\Mockingbird.API.csproj", "{2D51BF25-E3C9-491E-B44F-A892AC2ACA43}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2D51BF25-E3C9-491E-B44F-A892AC2ACA43}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2D51BF25-E3C9-491E-B44F-A892AC2ACA43}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2D51BF25-E3C9-491E-B44F-A892AC2ACA43}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2D51BF25-E3C9-491E-B44F-A892AC2ACA43}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
