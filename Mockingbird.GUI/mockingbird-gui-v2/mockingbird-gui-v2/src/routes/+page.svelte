@@ -1,2 +1,11 @@
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
+<script>
+    let carriers = [];
+</script>
+
+
+
+<div class="flex justify-center content-center mt-2">
+    <button type="button" class="btn variant-filled">
+        <span>Button</span>
+    </button>
+</div>

@@ -1,16 +1,5 @@
-<script>
-    import Headline from "./main-page/components/Headline.svelte";
-    import ButtonComponent from "./main-page/components/Button.svelte"
-</script>
 
-<Headline></Headline>
-
-
-<div class="button-container">
-    <ButtonComponent symbol="DPD" bgColor={"#2c777a"}></ButtonComponent>
-    <ButtonComponent symbol="Add new mock" bgColor={"#c53d46"}></ButtonComponent>
-</div>
-
+<h1>Configure a mock</h1>
 
 <style>
     main {
