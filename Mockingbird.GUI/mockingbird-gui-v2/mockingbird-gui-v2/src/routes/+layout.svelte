@@ -9,7 +9,7 @@
 <AppShell background="bg-surface-100-800-token">
     <svelte:fragment slot="header">
         <h1 class="h1 flex justify-center bg-surface-400">
-            <span class="bg-gradient-to-br from-pink-500 to-violet-500 bg-clip-text text-transparent box-decoration-clone">MockingBird</span>
+            <span class="box-decoration-clone">MockingBird</span>
         </h1>
     </svelte:fragment>
     <svelte:fragment slot="sidebarLeft">
