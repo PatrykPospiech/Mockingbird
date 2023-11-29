@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Mockingbird.API.Database;
 
@@ -10,9 +11,11 @@ using Mockingbird.API.Database;
 namespace Mockingbird.API.Migrations
 {
     [DbContext(typeof(CarrierContext))]
-    partial class CarrierContextModelSnapshot : ModelSnapshot
+    [Migration("20231129124115_UpdateOptional")]
+    partial class UpdateOptional
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

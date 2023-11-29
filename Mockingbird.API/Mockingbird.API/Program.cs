@@ -4,8 +4,12 @@ using Mockingbird.API.Database;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<CarrierContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("MSSQL")));
-    
+builder.Services.AddControllers();
+
 var app = builder.Build();
+app.MapControllerRoute(
+    name: "configuration",
+    pattern: "mockingbird/{controller}/{action}");
 
 #region MockEndpoints
 

@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Mockingbird.API.Database;
 
@@ -10,9 +11,11 @@ using Mockingbird.API.Database;
 namespace Mockingbird.API.Migrations
 {
     [DbContext(typeof(CarrierContext))]
-    partial class CarrierContextModelSnapshot : ModelSnapshot
+    [Migration("20231129104821_IndexUpdate")]
+    partial class IndexUpdate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -56,6 +59,7 @@ namespace Mockingbird.API.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CarrierId"));
 
                     b.Property<byte[]>("Icon")
+                        .IsRequired()
                         .HasColumnType("varbinary(max)");
 
                     b.Property<string>("Name")
@@ -124,7 +128,9 @@ namespace Mockingbird.API.Migrations
 
                     b.HasKey("MethodId");
 
-                    b.HasIndex("ApiResourceId", "Name", "MethodType")
+                    b.HasIndex("ApiResourceId");
+
+                    b.HasIndex("Name", "MethodType")
                         .IsUnique();
 
                     b.ToTable("Method");
@@ -172,6 +178,7 @@ namespace Mockingbird.API.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ResponseStatusCode")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ResponseId");
