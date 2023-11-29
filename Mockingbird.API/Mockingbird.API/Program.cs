@@ -1,6 +1,10 @@
+using Microsoft.EntityFrameworkCore;
 using Mockingbird.API;
+using Mockingbird.API.Database;
 
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddDbContext<CarrierContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("MSSQL")));
+    
 var app = builder.Build();
 
 #region MockEndpoints
@@ -11,6 +15,5 @@ app.MapPut("{endpoint}", (string endpoint) => { return DataSource.GetResponse(en
 app.MapDelete("{endpoint}", (string endpoint) => { return DataSource.GetResponse(endpoint).Value; });
 
 #endregion
-
 
 app.Run();
