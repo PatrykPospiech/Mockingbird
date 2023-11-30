@@ -9,7 +9,7 @@ builder.Services.AddControllers();
 var app = builder.Build();
 app.MapControllerRoute(
     name: "configuration",
-    pattern: "mockingbird/{controller}/{action}");
+    pattern: "mockingbird/{controller}");
 
 #region MockEndpoints
 
