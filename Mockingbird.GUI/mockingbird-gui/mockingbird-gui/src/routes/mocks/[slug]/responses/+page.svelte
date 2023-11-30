@@ -1,3 +1,18 @@
+<script lang="ts">
+    const popupAlert = () => {
+        alert('Data saved')
+    };
+
+    const addConfigurationData = async ({event}: { event: any }) => {
+        const formData = new FormData(event.target)
+
+        console.log([...formData]);
+
+        event.target.reset();
+    }
+
+</script>
+
 <div class="mt-8 sm:mx-auto sm:w-full sm:px-10">
     <h1 class="flex justify-center content-center mt-2 text-3xl px-10 py-5">Add responses to mock</h1>
 
@@ -35,13 +50,11 @@
         </div>
 
         <div class="flex justify-end">
-            <button type="button" class="btn variant-filled justify-self-end mt-5">
+            <button type="button" class="btn variant-filled justify-self-end mt-5" on:click={popupAlert}>
                 <span class="btn variant-filled ">Save</span>
             </button>
         </div>
-
     </div>
-
 
     <h1 class="flex justify-center content-center mt-2 text-3xl px-10 py-5">Current response configuration</h1>
 
@@ -69,6 +82,7 @@
 
         <p class="m-2 p-5">200</p>
         <p class="m-2 p-5">Label</p>
+        <p class="m-2 p-5">Response preview</p>
     </div>
 
     <div class="py-8 px-6 shadow rounded-lg sm:px-10 mt-5 flex items-stretch">
@@ -77,8 +91,9 @@
             <p>Is active</p>
         </label>
 
-        <p class="m-2">200</p>
-        <p class="m-2">Label</p>
+        <p class="m-2 p-5">200</p>
+        <p class="m-2 p-5">Label</p>
+        <p class="m-2 p-5">Response preview</p>
     </div>
 
 </div>

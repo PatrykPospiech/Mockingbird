@@ -13,7 +13,7 @@
         popupAlert()
     }
 
-    const addConfigurationData = async ({event}: { event: any }) => {
+    const addConfigurationData = async (event) => {
         const formData = new FormData(event.target)
 
         console.log([...formData]);
@@ -28,7 +28,7 @@
 
     <h1 class="flex justify-center content-center mt-2 text-3xl px-10 py-5">Configure mock</h1>
     <div class="py-8 px-6 shadow rounded-lg sm:px-10">
-        <form on:submit|preventDefault={addConfigurationData}>
+        <form on:submit={addConfigurationData}>
             <label class="label">
                 <span>Endpoint</span>
                 <input class="form-control w-full px-3 py-2 rounded-lg shadow-sm"
