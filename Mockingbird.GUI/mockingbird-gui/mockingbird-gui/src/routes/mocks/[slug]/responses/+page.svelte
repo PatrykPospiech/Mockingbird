@@ -32,7 +32,6 @@
                 </label>
             </div>
 
-
         </div>
 
         <div class="flex justify-end">
@@ -41,7 +40,6 @@
             </button>
         </div>
 
-
     </div>
 
 
@@ -49,29 +47,28 @@
 
     <div class="flex flex-row justify-start space-y-2">
 
-            <label class="flex items-center space-x-2">
-                <input class="checkbox" type="checkbox" checked/>
-                <p>Generate validation set</p>
-            </label>
-            <label class="flex items-center space-x-2">
-                <input class="checkbox" type="checkbox"/>
-                <p>Call TPS</p>
-            </label>
-            <label class="flex items-center space-x-2">
-                <input class="checkbox" type="checkbox"/>
-                <p>Regresion tests</p>
-            </label>
-
+        <label class="flex items-center space-x-2 p-10">
+            <input class="checkbox" type="checkbox" checked/>
+            <p>Generate validation set</p>
+        </label>
+        <label class="flex items-center space-x-2 p-10">
+            <input class="checkbox" type="checkbox"/>
+            <p>Call TPS</p>
+        </label>
+        <label class="flex items-center space-x-2 p-10">
+            <input class="checkbox" type="checkbox"/>
+            <p>Regression tests</p>
+        </label>
     </div>
 
-    <div class="py-8 px-6 shadow rounded-lg sm:px-10 mt-5 flex items-stretch">
+    <div class="py-8 px-6 shadow rounded-lg sm:px-10 mt-5 flex items-stretch p-5">
         <label class="flex items-center space-x-2">
             <input class="checkbox" type="checkbox"/>
             <p>Is active</p>
         </label>
 
-        <p class="m-2">200</p>
-        <p class="m-2">Label</p>
+        <p class="m-2 p-5">200</p>
+        <p class="m-2 p-5">Label</p>
     </div>
 
     <div class="py-8 px-6 shadow rounded-lg sm:px-10 mt-5 flex items-stretch">

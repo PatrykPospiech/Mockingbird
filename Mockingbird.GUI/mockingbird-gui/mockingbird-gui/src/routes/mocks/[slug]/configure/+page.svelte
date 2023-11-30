@@ -5,14 +5,20 @@
 
     let currentEndpoint: string = ""
 
-    const popupState: PopupSettings = {
-        target: "",
-        event:"click",
-        state: (e: Record<string, boolean>) => console.log(e)
+    const popupAlert = () => {
+        alert('Data saved')
     };
     const addEndpoint = () => {
-       endpoints = [...endpoints, currentEndpoint]
-        alert('Data saved')
+        endpoints = [...endpoints, currentEndpoint]
+        popupAlert()
+    }
+
+    const addConfigurationData = async ({event}: { event: any }) => {
+        const formData = new FormData(event.target)
+
+        console.log([...formData]);
+
+        event.target.reset();
     }
 
 
@@ -22,38 +28,39 @@
 
     <h1 class="flex justify-center content-center mt-2 text-3xl px-10 py-5">Configure mock</h1>
     <div class="py-8 px-6 shadow rounded-lg sm:px-10">
-        <label class="label">
-            <span>Endpoint</span>
-            <input required
-                   class="input w-full border border-gray-900 px-3 py-2 rounded-lg shadow-sm focus:outline-purple-700 focus:border-indigo-900 focus:ring-50 focus:ring-indigo-950"
-                   type="text" placeholder="Endpoint" bind:value={currentEndpoint}/>
-        </label>
+        <form on:submit|preventDefault={addConfigurationData}>
+            <label class="label">
+                <span>Endpoint</span>
+                <input class="form-control w-full px-3 py-2 rounded-lg shadow-sm"
+                       type="text" placeholder="Endpoint" required bind:value={currentEndpoint}/>
+            </label>
 
-        <label class="label">
-            <span>Carrier name</span>
-            <input id="carrier name" required
-                   class="input w-full border border-gray-900 px-3 py-2 rounded-lg shadow-sm focus:outline-purple-700 focus:border-indigo-900 focus:ring-50 focus:ring-indigo-950"
-                   type="text" placeholder="Carrier name"/>
-        </label>
+            <label class="label">
+                <span>Carrier name</span>
+                <input id="carrier name" required
+                       class="form-control w-full px-3 py-2 rounded-lg shadow-sm"
+                       type="text" placeholder="Carrier name"/>
+            </label>
 
-        <label class="label">
-            <span>Nickname</span>
-            <input required
-                   class="input w-full border border-gray-900 px-3 py-2 rounded-lg shadow-sm focus:outline-purple-700 focus:border-indigo-900 focus:ring-50 focus:ring-indigo-950"
-                   type="text" placeholder="Nickname"/>
-        </label>
+            <label class="label">
+                <span>Nickname</span>
+                <input required
+                       class="form-control w-full px-3 py-2 rounded-lg shadow-sm"
+                       type="text" placeholder="Nickname"/>
+            </label>
 
+            <label class="label">
+                <span>Carrier logo</span>
+                <input required
+                       class="form-control w-full px-3 py-2 rounded-lg shadow-sm"
+                       type="file" placeholder="Carrier logo"/>
+            </label>
 
-        <label class="Carrier logo">
-            <span>Carrier logo</span>
-            <input required
-                   class="input w-full border border-gray-900 px-3 py-2 rounded-lg shadow-sm focus:outline-purple-700 focus:border-indigo-900 focus:ring-50 focus:ring-indigo-950"
-                   type="file" placeholder="Carrier logo"/>
-        </label>
+            <button class="btn variant-filled flex justify-end mt-5" on:click={addEndpoint} type="button">
+                Save
+            </button>
 
-        <button class="btn variant-filled flex justify-end mt-5" on:click={addEndpoint} type="button">
-            Save
-        </button>
+        </form>
 
     </div>
 
@@ -65,20 +72,19 @@
             <span>Choose endpoint for given path</span>
             <select class="select">
                 {#each endpoints as endpoint, index}
-                <option value={index}>{endpoint}</option>
+                    <option value={index}>{endpoint}</option>
                 {/each}
             </select>
         </label>
 
-
         <label class="label">
             <span>Path</span>
             <input required
-                   class="input w-full border border-gray-900 px-3 py-2 rounded-lg shadow-sm focus:outline-purple-700 focus:border-indigo-900 focus:ring-50 focus:ring-indigo-950"
+                   class="input w-full border px-3 py-2 rounded-lg shadow-sm"
                    type="text" placeholder="Endpoit path e.g. 'Auth'"/>
-            </label>
+        </label>
 
-        <button type="button" class="btn variant-filled flex justify-end mt-5">
+        <button type="button" class="btn variant-filled flex justify-end mt-5" on:click={popupAlert}>
             <span class="btn variant-filled">Save</span>
         </button>
 
