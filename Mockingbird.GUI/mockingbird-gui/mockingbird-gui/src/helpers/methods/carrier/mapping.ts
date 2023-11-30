@@ -1,5 +1,5 @@
-import type { AxiosRequestConfig, AxiosResponse } from 'axios';
-import { CARRIER_URL} from "../../api-communication/config";
+import type {AxiosRequestConfig, AxiosResponse} from 'axios';
+import {CARRIER_URL} from "../../api-communication/config";
 
 export const MapCarrierListRequest = (): AxiosRequestConfig => {
     return {

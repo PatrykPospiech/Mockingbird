@@ -1,4 +1,4 @@
-import type { Response } from './response';
+import type {Response} from './response';
 
 export interface Method {
     method_id: string;

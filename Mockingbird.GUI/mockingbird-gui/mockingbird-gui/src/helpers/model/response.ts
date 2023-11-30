@@ -1,4 +1,4 @@
-import type { Header } from './header';
+import type {Header} from './header';
 
 export interface Response {
     response_id: string;

@@ -1,4 +1,4 @@
-import type { Method } from './method';
+import type {Method} from './method';
 
 export interface ApiResource {
     api_resource_id: string;

@@ -1,8 +1,8 @@
-
 import {GetApiResponse} from "../../api-communication/api-communication";
 import type {CarrierData} from "../../model/carrierData";
-import type { AxiosRequestConfig, AxiosResponse } from 'axios';
+import type {AxiosRequestConfig, AxiosResponse} from 'axios';
 import {MapCarrierListRequest} from './mapping';
+
 export const GetCarrierList = async (): Promise<CarrierData[]> => {
 
     const thirdPartyRequest: AxiosRequestConfig = MapCarrierListRequest();
