@@ -35,7 +35,7 @@
                 <a class="btn variant-filled" href="/mocks/slug/configure">Configure a new mock </a>
             </button>
             <button type="button" class="btn variant-filled jus">
-                <a class="btn variant-filled" href="/">Return to main page</a>
+                <a class="btn variant-filled" href="/Mockingbird.GUI/mockingbird-gui/static">Return to main page</a>
             </button>
         </div>
     </svelte:fragment>
