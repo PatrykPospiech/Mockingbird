@@ -12,6 +12,7 @@ var app = builder.Build();
 
 var scope = app.Services.CreateScope();
 var context = scope.ServiceProvider.GetService<CarrierContext>();
+context.Database.EnsureCreated();
 context.Database.Migrate();
     
 app.MapControllerRoute(
