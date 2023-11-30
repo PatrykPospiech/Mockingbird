@@ -10,6 +10,12 @@ builder.Services.AddDbContext<CarrierContext>(options => options.UseSqlServer(bu
 builder.Services.AddControllers();
 
 var app = builder.Build();
+
+var scope = app.Services.CreateScope();
+var context = scope.ServiceProvider.GetService<CarrierContext>();
+context.Database.EnsureCreated();
+context.Database.Migrate();
+    
 app.MapControllerRoute(
     name: "configuration",
     pattern: "mockingbird/{controller}");
