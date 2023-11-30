@@ -1,0 +1,45 @@
+﻿services:
+  mockingbird.api:
+    image: mockingbird.api
+    build:
+      context: .
+      dockerfile: Mockingbird.API/Mockingbird.API/Dockerfile
+    ports:
+      - "8080:8080"
+    depends_on:
+      - database
+    deploy:
+      resources:
+        limits:
+          memory: 512m
+          cpus: "0.25"
+
+  database:
+    build:
+      context: .
+      dockerfile: infrastructure/database/Dockerfile
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=Qwerty!@
+      - TZ=UTC
+    ports:
+      - "1433:1433"
+    volumes:
+      - database-data:/var/opt/mssql
+    deploy:
+      resources:
+        limits:
+          memory: 2048m
+          cpus: "0.50"
+#  frontend:
+#    restart: always
+#    build:
+#      context: .
+#      dockerfile: Mockingbird.GUI/mockingbird-gui/Dockerfile
+#    volumes:
+#       - ./:/app
+#    ports:
+#      - "8000:3000"
+#    command: ["node","build"]
+volumes:
+  database-data:
