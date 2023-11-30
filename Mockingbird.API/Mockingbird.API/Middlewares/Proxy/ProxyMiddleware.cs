@@ -1,4 +1,5 @@
 using System.Text;
+using Mockingbird.API.Logic;
 
 namespace Mockingbird.API.ReverseProxy
 {
@@ -13,14 +14,7 @@ namespace Mockingbird.API.ReverseProxy
       _nextMiddleware = nextMiddleware;
       _logger = logger;
     }
-    public static void SaveFile(string outputFileData, string fileName)
-    {
-      using (FileStream fs = File.Create(Directory.GetCurrentDirectory() + fileName + ".json"))
-      {
-        byte[] info = new UTF8Encoding(true).GetBytes(outputFileData);
-        fs.Write(info, 0, info.Length);
-      }
-    }
+    
     public async Task Invoke(HttpContext context)
     {
       _logger.LogInformation("ReverseProxyMiddleware");
@@ -41,34 +35,31 @@ namespace Mockingbird.API.ReverseProxy
 
       _logger.LogInformation("Map proxy request to target");
       var targetRequestMessage = CreateTargetMessage(context, targetUri);
-
-
-      
       
       using var responseMessage = await _httpClient.SendAsync(targetRequestMessage, HttpCompletionOption.ResponseHeadersRead, context.RequestAborted);
       context.Response.StatusCode = (int)responseMessage.StatusCode;
-
-      
-
       
       
       CopyFromTargetResponseHeaders(context, responseMessage);
       await responseMessage.Content.CopyToAsync(context.Response.Body);
-      
       
       _logger.LogInformation("Save files...");
       var originalRequestBodyStream = context.Request.Body;
       using (StreamReader reader = new StreamReader(originalRequestBodyStream, Encoding.UTF8))
       {
         string content = await reader.ReadToEndAsync();
-        SaveFile(content, "request");
+        IOFilesHelper.SaveFile(content, "request", _logger); 
+        // TODO: looking for solution to identify labels for specific carrier.
+        // - populate carrier name into headers to save files in specific directory ?? 
+        // - get carrier name based on the path, save request response by gui and connect it on the db - specific carrier collection of the requests
+        // - or just save all requests and responses to the database
       }
       
       var responseBodyStream = context.Response.Body;
       using (StreamReader reader = new StreamReader(responseBodyStream, Encoding.UTF8))
       {
         string content = await reader.ReadToEndAsync();
-        SaveFile(content, "request");
+        IOFilesHelper.SaveFile(content, "response", _logger);
       }
     }
 
@@ -128,6 +119,7 @@ namespace Mockingbird.API.ReverseProxy
       return new HttpMethod(method);
     }
 
+    //It will be consumed from the configuration later...
     private Dictionary<string, string> UriMapper = new Dictionary<string, string>()
     {
       { "/mock/dhl", "dhl.com/createlabel" },
@@ -137,8 +129,8 @@ namespace Mockingbird.API.ReverseProxy
     private Uri BuildTargetUri(HttpRequest request)
     {
       _logger.LogInformation($"Looking for target URI: {request.Path}");
-      PathString target;
-      var mapping = UriMapper.FirstOrDefault(i => request.Path.StartsWithSegments(i.Key, out target));
+
+      var mapping = UriMapper.FirstOrDefault(i => request.Path.StartsWithSegments(i.Key, out _));
       if (mapping.Value != null)
       {
         _logger.LogInformation("Target URI has been found");
