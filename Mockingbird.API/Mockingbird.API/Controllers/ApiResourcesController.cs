@@ -73,7 +73,7 @@ public class ResourcesController: BaseController
                     MethodType = method.MethodType,
                     Responses = method.Responses.Select(response => new Response()
                     {
-                        ResponseId = Guid.NewGuid().ToString(),
+                        ResponseId = Guid.NewGuid(),
                         ResponseBody = response.ResponseBody,
                         ResponseStatusCode = response.ResponseStatusCode,
                         IsActive = response.IsActive ?? false,

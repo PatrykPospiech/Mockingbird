@@ -5,7 +5,7 @@ namespace Mockingbird.API.DTO;
 public record ResponseDTO
 {
     [JsonPropertyName("response_id")]
-    public string? ResponseId { get; init; }
+    public Guid? ResponseId { get; init; }
     
     [JsonPropertyName("is_active")]
     public bool? IsActive { get; set; }

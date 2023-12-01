@@ -52,7 +52,7 @@ public record Method
 
 public record Response
 {
-    public string ResponseId { get; init; }
+    public Guid ResponseId { get; init; }
     public bool IsActive { get; set; }
     public string? ResponseStatusCode { get; set; }
     public string ResponseBody { get; set; }
@@ -68,6 +68,6 @@ public record Header
     public string Name { get; init; }
     public string Value { get; set; }
     
-    public int ResponseId { get; init; }
+    public Guid ResponseId { get; init; }
     public Response Response { get; init; }
 }

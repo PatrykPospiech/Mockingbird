@@ -58,7 +58,7 @@ public class CarriersController : BaseController
                     MethodType = method.MethodType,
                     Responses = method.Responses?.Select(response => new Response
                     {
-                        ResponseId = Guid.NewGuid().ToString(),
+                        ResponseId = Guid.NewGuid(),
                         IsActive = response.IsActive ?? false,
                         ResponseStatusCode = response.ResponseStatusCode,
                         ResponseBody = response.ResponseBody,

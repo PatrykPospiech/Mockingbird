@@ -1,11 +1,12 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
 namespace Mockingbird.API.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialDBCreate : Migration
+    public partial class InitialCreate : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -92,7 +93,7 @@ namespace Mockingbird.API.Migrations
                 name: "Responses",
                 columns: table => new
                 {
-                    ResponseId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    ResponseId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     IsActive = table.Column<bool>(type: "bit", nullable: false),
                     ResponseStatusCode = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     ResponseBody = table.Column<string>(type: "nvarchar(max)", nullable: false),
@@ -117,17 +118,17 @@ namespace Mockingbird.API.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Value = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ResponseId = table.Column<int>(type: "int", nullable: false),
-                    ResponseId1 = table.Column<string>(type: "nvarchar(450)", nullable: true)
+                    ResponseId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Headers", x => x.HeaderId);
                     table.ForeignKey(
-                        name: "FK_Headers_Responses_ResponseId1",
-                        column: x => x.ResponseId1,
+                        name: "FK_Headers_Responses_ResponseId",
+                        column: x => x.ResponseId,
                         principalTable: "Responses",
-                        principalColumn: "ResponseId");
+                        principalColumn: "ResponseId",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
@@ -142,9 +143,9 @@ namespace Mockingbird.API.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_Headers_ResponseId1",
+                name: "IX_Headers_ResponseId",
                 table: "Headers",
-                column: "ResponseId1");
+                column: "ResponseId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Method_ApiResourceId_Name_MethodType",
