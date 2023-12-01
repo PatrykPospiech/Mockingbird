@@ -8,8 +8,8 @@ using Mockingbird.API.Logic;
 using Mockingbird.API.ReverseProxy;
 
 var builder = WebApplication.CreateBuilder(args);
-//builder.Services.AddDbContext<CarrierContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("MSSQL")));
-builder.Services.AddDbContext<CarrierContext>(options => options.UseInMemoryDatabase("Test"));
+builder.Services.AddDbContext<CarrierContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("MSSQL")));
+//builder.Services.AddDbContext<CarrierContext>(options => options.UseInMemoryDatabase("Test"));
 builder.Services.AddControllers();
 builder.Services.AddScoped<MiddlewareReqResCache>();
 

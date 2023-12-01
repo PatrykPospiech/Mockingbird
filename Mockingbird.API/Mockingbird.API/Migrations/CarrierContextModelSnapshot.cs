@@ -181,6 +181,32 @@ namespace Mockingbird.API.Migrations
                     b.ToTable("Responses");
                 });
 
+            modelBuilder.Entity("Mockingbird.API.Database.TPSCommunication", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int?>("CarrierId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("RequestBase64")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ResponseBase64")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CarrierId");
+
+                    b.ToTable("TpsCommunications");
+                });
+
             modelBuilder.Entity("Mockingbird.API.Database.ApiResource", b =>
                 {
                     b.HasOne("Mockingbird.API.Database.Carrier", "Carrier")
@@ -236,6 +262,13 @@ namespace Mockingbird.API.Migrations
                     b.Navigation("Method");
                 });
 
+            modelBuilder.Entity("Mockingbird.API.Database.TPSCommunication", b =>
+                {
+                    b.HasOne("Mockingbird.API.Database.Carrier", null)
+                        .WithMany("TpsCommunications")
+                        .HasForeignKey("CarrierId");
+                });
+
             modelBuilder.Entity("Mockingbird.API.Database.ApiResource", b =>
                 {
                     b.Navigation("Methods");
@@ -246,6 +279,8 @@ namespace Mockingbird.API.Migrations
                     b.Navigation("ApiResources");
 
                     b.Navigation("Options");
+
+                    b.Navigation("TpsCommunications");
                 });
 
             modelBuilder.Entity("Mockingbird.API.Database.Method", b =>

@@ -69,6 +69,26 @@ namespace Mockingbird.API.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "TpsCommunications",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    RequestBase64 = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ResponseBase64 = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    CarrierId = table.Column<int>(type: "int", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_TpsCommunications", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_TpsCommunications_Carriers_CarrierId",
+                        column: x => x.CarrierId,
+                        principalTable: "Carriers",
+                        principalColumn: "CarrierId");
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Method",
                 columns: table => new
                 {
@@ -163,6 +183,11 @@ namespace Mockingbird.API.Migrations
                 name: "IX_Responses_MethodId",
                 table: "Responses",
                 column: "MethodId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_TpsCommunications_CarrierId",
+                table: "TpsCommunications",
+                column: "CarrierId");
         }
 
         /// <inheritdoc />
@@ -173,6 +198,9 @@ namespace Mockingbird.API.Migrations
 
             migrationBuilder.DropTable(
                 name: "Options");
+
+            migrationBuilder.DropTable(
+                name: "TpsCommunications");
 
             migrationBuilder.DropTable(
                 name: "Responses");
