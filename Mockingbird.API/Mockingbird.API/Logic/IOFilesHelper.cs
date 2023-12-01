@@ -1,3 +1,4 @@
+using System.IO.Compression;
 using System.Text;
 
 namespace Mockingbird.API.Logic;
@@ -26,4 +27,33 @@ public static class IOFilesHelper
 
         return tempFilePath;
     }
+    
+    public static string CombineZipFileForCarrierOutputs(string[] base64Requests, string[] base64Responses)
+    {
+
+            string tempDir = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString());
+            Directory.CreateDirectory(tempDir);
+
+            for (var i = 0; i < base64Requests.Length; i++)
+            {
+                var content = base64Requests[i];
+                var filePath = DecodeBase64ToFile(content);
+                string copiedFile1Path = Path.Combine(tempDir, $"file{i}.json");
+                File.Copy(filePath, copiedFile1Path);
+            }
+
+            for (var i = 0; i < base64Responses.Length; i++)
+            {
+                var content = base64Responses[i];
+                var filePath = DecodeBase64ToFile(content);
+                string copiedFile1Path = Path.Combine(tempDir, $"file{i}.json");
+                File.Copy(filePath, copiedFile1Path);
+            }
+
+            string zipFilePath = Path.Combine(Path.GetTempPath(), $"{Guid.NewGuid()}.zip");
+            ZipFile.CreateFromDirectory(tempDir, zipFilePath);
+
+            return zipFilePath;
+    }
+
 }

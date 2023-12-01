@@ -14,6 +14,7 @@ public record Carrier
     
     public ICollection<Option>? Options { get; set; }
     public ICollection<ApiResource>? ApiResources { get; set; }
+    public ICollection<TPSCommunication>? TpsCommunications { get; set; }
 }
 
 [Index(nameof(CarrierId), nameof(Name), nameof(Value), IsUnique = true)]
@@ -70,4 +71,11 @@ public record Header
     
     public Guid ResponseId { get; init; }
     public Response Response { get; init; }
+}
+
+public record TPSCommunication
+{
+    public int Id { get; init; }
+    public string RequestBase64 { get; set; }
+    public string ResponseBase64 { get; set; }
 }

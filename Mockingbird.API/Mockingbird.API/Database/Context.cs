@@ -11,6 +11,8 @@ public class CarrierContext : DbContext
     public DbSet<Method> Method { get; set; }
     public DbSet<Response> Responses { get; set; }
     public DbSet<Header> Headers { get; set; }
+    
+    public DbSet<TPSCommunication> TpsCommunications { get; set; }
 
     public CarrierContext(DbContextOptions<CarrierContext> options) : base(options)
     {
