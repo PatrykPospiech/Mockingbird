@@ -5,7 +5,7 @@ export interface CarrierData {
     carrier_id: string;
     name: string;
     nickname:string;
-    icon?: object;
+    icon?: string;
     options?: Option[];
     api_resources?: ApiResource[];
 }

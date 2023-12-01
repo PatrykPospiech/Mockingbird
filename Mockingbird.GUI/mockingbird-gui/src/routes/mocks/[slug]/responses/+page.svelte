@@ -1,3 +1,14 @@
+<script lang="ts">
+
+    function hehe() {
+        console.log("hehehehe")
+    }
+
+    console.log('whoop')
+
+</script>
+
+
 <div class="mt-8 sm:mx-auto sm:w-full sm:px-10">
 
     <div class="py-8 px-6 shadow rounded-lg sm:px-10 mt-2 card">
@@ -36,7 +47,7 @@
         </div>
 
         <div class="flex justify-end">
-            <button type="button" class="btn variant-filled justify-self-end mt-5">
+            <button type="button" class="btn variant-filled justify-self-end mt-5" on:click={hehe}>
                 <span class="btn variant-filled ">Save</span>
             </button>
         </div>

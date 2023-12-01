@@ -1,18 +1,22 @@
-import type { AxiosRequestConfig, AxiosResponse } from 'axios';
-import { Axios } from 'axios';
-
-export const GetApiResponse = async (requestConfig: AxiosRequestConfig): Promise<AxiosResponse> => {
+import {CARRIER_URL} from "./config";
+import type {CarrierData} from "../model/carrierData";
 
 
-    const axios = new Axios(requestConfig);
-    let response: AxiosResponse;
+export const GetApiResponse = async (requestConfig: RequestInit, carrierUrl: string, fetch: any): Promise<any> => {
+    let response: Response;
 
     try {
-        response = await axios.request(requestConfig);
-    }
-    catch(e) {
-        throw new Error(`an unexpected error occurred during api communication with message`);
-    }
+        response = await fetch(carrierUrl, requestConfig);
 
-    return response;
+        if (!response.ok) {
+            throw new Error(`Request failed with status: ${response.status}`);
+        }
+
+        const responseBody: CarrierData[] = await response.json();
+
+        return responseBody;
+    } catch (error) {
+        console.log(error)
+        throw new Error(`An unexpected error occurred during API communication with message: ${error} ${error}`);
+    }
 };
