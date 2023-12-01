@@ -1,9 +1,10 @@
 <div class="mt-8 sm:mx-auto sm:w-full sm:px-10">
-    <h1 class="flex justify-center content-center mt-2 text-3xl px-10 py-5">Add responses to mock</h1>
 
-    <div class="py-8 px-6 shadow rounded-lg sm:px-10 mt-2 ">
+    <div class="py-8 px-6 shadow rounded-lg sm:px-10 mt-2 card">
+        <h1 class="flex justify-center content-center mt-2 text-3xl px-10 py-5">Add responses to mock</h1>
+
         <div class="flex flex-row">
-            <label class="label basis-1/4">
+            <label class="label basis-1/6">
                 <span>Path</span>
                 <select class="select">
                     <option value="1">Auth</option>
@@ -12,7 +13,7 @@
                 </select>
             </label>
 
-            <label class="label basis-1/4">
+            <label class="label basis-1/6">
                 <span>Status</span>
                 <select class="select">
                     <option value="1">200</option>
@@ -43,25 +44,25 @@
     </div>
 
 
-    <h1 class="flex justify-center content-center mt-2 text-3xl px-10 py-5">Current response configuration</h1>
-
-    <div class="flex flex-row justify-start space-y-2">
-
-        <label class="flex items-center space-x-2 p-10">
-            <input class="checkbox" type="checkbox" checked/>
-            <p>Generate validation set</p>
-        </label>
-        <label class="flex items-center space-x-2 p-10">
-            <input class="checkbox" type="checkbox"/>
-            <p>Call TPS</p>
-        </label>
-        <label class="flex items-center space-x-2 p-10">
-            <input class="checkbox" type="checkbox"/>
-            <p>Regression tests</p>
-        </label>
+    <div class="card mt-10">
+        <h1 class="flex justify-center content-center text-3xl">Current response configuration</h1>
+        <div class="flex flex-row justify-start space-y-2 card">
+            <label class="flex items-center space-x-2 p-10">
+                <input class="checkbox" type="checkbox" checked/>
+                <p>Generate validation set</p>
+            </label>
+            <label class="flex items-center space-x-2 p-10">
+                <input class="checkbox" type="checkbox"/>
+                <p>Call TPS</p>
+            </label>
+            <label class="flex items-center space-x-2 p-10">
+                <input class="checkbox" type="checkbox"/>
+                <p>Regression tests</p>
+            </label>
+        </div>
     </div>
 
-    <div class="py-8 px-6 shadow rounded-lg sm:px-10 mt-5 flex items-stretch p-5">
+    <div class="py-8 px-6 shadow rounded-lg sm:px-10 mt-5 flex items-stretch p-5 card">
         <label class="flex items-center space-x-2">
             <input class="checkbox" type="checkbox"/>
             <p>Is active</p>
@@ -71,14 +72,5 @@
         <p class="m-2 p-5">Label</p>
     </div>
 
-    <div class="py-8 px-6 shadow rounded-lg sm:px-10 mt-5 flex items-stretch">
-        <label class="flex items-center space-x-2">
-            <input class="checkbox" type="checkbox"/>
-            <p>Is active</p>
-        </label>
-
-        <p class="m-2">200</p>
-        <p class="m-2">Label</p>
-    </div>
 
 </div>

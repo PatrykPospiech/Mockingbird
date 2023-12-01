@@ -8,10 +8,10 @@
 
 <div class="flex justify-center content-center mt-2 ">
     <div class="flex-grow-0 justify-center btn-icon btn-icon-xl">
-        {#each carriers as carrier (carrier.carrierId)}
-            <div>
-                <a class="btn variant-filled" href="/mocks/{carrier.carrierId}/responses"> {carrier.name} </a>
-            </div>
+        {#each carriers as carrier (carrier.carrier_id)}
+            <button type="button" class="btn variant-filled bg-primary-500">
+                <a href="/mocks/{carrier.carrier_id}/responses"> {carrier.name} </a>
+            </button>
         {/each}
     </div>
 </div>

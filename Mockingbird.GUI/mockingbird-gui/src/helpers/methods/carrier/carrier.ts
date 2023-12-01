@@ -7,6 +7,7 @@ export const GetCarrierList = async (): Promise<CarrierData[]> => {
 
     const thirdPartyRequest: AxiosRequestConfig = MapCarrierListRequest();
     const response: AxiosResponse = await callApi(thirdPartyRequest);
+    console.log("RESPONSE" + JSON.stringify(response.data))
     return JSON.parse(response.data) as CarrierData[];
 };
 
