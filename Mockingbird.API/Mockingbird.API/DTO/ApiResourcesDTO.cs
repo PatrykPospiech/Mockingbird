@@ -13,11 +13,11 @@ public record ApiResourceDTO
     public int? ApiResourceId { get; init; }
     
     [JsonPropertyName("name")]
-    public string Name { get; init; }
+    public string? Name { get; init; }
     
     [JsonPropertyName("url")]
     public string Url { get; set; }
 
     [JsonPropertyName("methods")]
-    public ICollection<MethodDTO> Methods { get; set; } 
+    public ICollection<MethodDTO>? Methods { get; set; } 
 }

@@ -97,4 +97,51 @@ public class ResourcesController: BaseController
             return TypedResults.Problem(ex.ToString());
         }
     }
+
+    [HttpPut]
+    public async Task<IResult> UpdateResource(int apiResourceId, ApiResourceDTO resource)
+    {
+        if (apiResourceId == null || apiResourceId <= 0)
+        {
+            return TypedResults.BadRequest("Provide a valid resource id");
+        }
+
+        var apiResource = await _carrierContext.ApiResources
+            .Include(apiResource => apiResource.Methods)
+            .ThenInclude(method => method.Responses)
+            .ThenInclude(response => response.Headers)
+            .FirstOrDefaultAsync(apiResource => apiResource.ApiResourceId == apiResourceId);
+        
+        if (resource == null)
+        {
+            return TypedResults.NotFound($"Api resource with id: \'{apiResourceId}\' not found.");
+        }
+
+        apiResource.Url = resource.Url;
+
+        _carrierContext.ApiResources.Update(apiResource);
+        await _carrierContext.SaveChangesAsync();
+
+        return TypedResults.Ok(DTOMapper.MapApiResourceToDTO(apiResource));
+    }
+
+    [HttpDelete]
+    public async Task<IResult> DeleteResource(int apiResourceId = -1)
+    {
+        if (apiResourceId == -1)
+        {
+            return TypedResults.BadRequest("Provide a valid resource id");
+        }
+
+        var resource = await _carrierContext.ApiResources.FirstOrDefaultAsync(apiResource => apiResource.ApiResourceId == apiResourceId);
+        if (resource == null)
+        {
+            return TypedResults.NotFound($"Api resource with id: \'{apiResourceId}\' not found.");
+        }
+
+        _carrierContext.ApiResources.Remove(resource);
+        await _carrierContext.SaveChangesAsync();
+
+        return TypedResults.Ok();
+    }
 }
