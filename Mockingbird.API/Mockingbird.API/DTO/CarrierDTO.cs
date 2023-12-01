@@ -1,21 +1,26 @@
+using System.Text.Json.Serialization;
 using Mockingbird.API.Database;
 
 namespace Mockingbird.API.DTO;
 
-public record CarrierInputDTO
+public record CarrierDTO
 {
-    public string Name { get; init; }
-    public string Nickname { get; init; }
-    public byte[]? Icon { get; init; }
-}
-
-public record CarrierOutputDTO
-{
-    public int CarrierId { get; init; }
-    public string Name { get; init; }
-    public string Nickname { get; init; }
-    public byte[]? Icon { get; init; }
+    [JsonPropertyName("carrier_id")]
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+    public int? CarrierId { get; init; }
     
-    public ICollection<Option>? Options { get; init; }
-    public ICollection<ApiResource>? ApiResources { get; init; }
+    [JsonPropertyName("name")]
+    public string Name { get; init; }
+    
+    [JsonPropertyName("nickname")]
+    public string Nickname { get; init; }
+    
+    [JsonPropertyName("icon")]
+    public string? Icon { get; init; }
+    
+    [JsonPropertyName("options")]
+    public ICollection<OptionDTO>? Options { get; init; }
+    
+    [JsonPropertyName("api_resources")]
+    public ICollection<ApiResourceDTO>? ApiResources { get; init; }
 }
