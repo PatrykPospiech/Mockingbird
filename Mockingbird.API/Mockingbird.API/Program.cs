@@ -24,13 +24,13 @@ app.UseMiddleware<ProxyMiddleware>();
 
 #region MockEndpoints
 
-app.MapPost("mock/{endpoint}", (string endpoint) =>
+app.MapPost("mock/{configurationId}/{endpoint}", (string endpoint) =>
 { 
     return DataSource.GetResponse(endpoint).Value;
 });
-app.MapGet("mock/{endpoint}", (string endpoint) => { return DataSource.GetResponse(endpoint).Value; });
-app.MapPut("mock/{endpoint}", (string endpoint) => { return DataSource.GetResponse(endpoint).Value; });
-app.MapDelete("mock/{endpoint}", (string endpoint) => { return DataSource.GetResponse(endpoint).Value; });
+app.MapGet("mock/{configurationId}/{endpoint}", (string endpoint) => { return DataSource.GetResponse(endpoint).Value; });
+app.MapPut("mock/{configurationId}/{endpoint}", (string endpoint) => { return DataSource.GetResponse(endpoint).Value; });
+app.MapDelete("mock/{configurationId}/{endpoint}", (string endpoint) => { return DataSource.GetResponse(endpoint).Value; });
 
 #endregion
 

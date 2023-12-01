@@ -1,4 +1,5 @@
 using System.Text;
+using Mockingbird.API.Database;
 using Mockingbird.API.Logic;
 
 namespace Mockingbird.API.ReverseProxy
@@ -8,11 +9,13 @@ namespace Mockingbird.API.ReverseProxy
     private static readonly HttpClient _httpClient = new HttpClient();
     private readonly RequestDelegate _nextMiddleware;
     private readonly ILogger<ProxyMiddleware> _logger;
-    
-    public ProxyMiddleware(RequestDelegate nextMiddleware, ILogger<ProxyMiddleware> logger)
+    private readonly CarrierContext _context;
+
+    public ProxyMiddleware(RequestDelegate nextMiddleware, ILogger<ProxyMiddleware> logger, CarrierContext context)
     {
       _nextMiddleware = nextMiddleware;
       _logger = logger;
+      _context = context;
     }
     
     public async Task Invoke(HttpContext context)
@@ -48,7 +51,10 @@ namespace Mockingbird.API.ReverseProxy
       using (StreamReader reader = new StreamReader(originalRequestBodyStream, Encoding.UTF8))
       {
         string content = await reader.ReadToEndAsync();
-        IOFilesHelper.SaveFile(content, "request", _logger); 
+        IOFilesHelper.SaveFile(content, "request", _logger);
+        var pathSplit = context.Request.Path.ToString().Split('/');
+        Console.WriteLine(pathSplit[^2]);
+        
         // TODO: looking for solution to identify labels for specific carrier.
         // - populate carrier name into headers to save files in specific directory ?? 
         // - get carrier name based on the path, save request response by gui and connect it on the db - specific carrier collection of the requests
@@ -129,8 +135,9 @@ namespace Mockingbird.API.ReverseProxy
     private Uri BuildTargetUri(HttpRequest request)
     {
       _logger.LogInformation($"Looking for target URI: {request.Path}");
+      var pathSplit = request.Path.ToString().Split("/");
 
-      var mapping = UriMapper.FirstOrDefault(i => request.Path.StartsWithSegments(i.Key, out _));
+      var mapping = UriMapper.FirstOrDefault(i => pathSplit[^1] == i.Key);
       if (mapping.Value != null)
       {
         _logger.LogInformation("Target URI has been found");
@@ -138,6 +145,12 @@ namespace Mockingbird.API.ReverseProxy
       }
 
       return null;
+    }
+    
+    private string GetCarrierNameFromPath(string path)
+    {
+      var carrierName = path.Split("/");
+      return carrierName[^2];
     }
   }
 }
