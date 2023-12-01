@@ -12,7 +12,7 @@ public record MethodDTO
     public string Name { get; init; }
     
     [JsonPropertyName("method_type")]
-    public string MethodType { get; set; }
+    public string? MethodType { get; set; }
     
     [JsonPropertyName("responses")]
     public ICollection<ResponseDTO>? Responses { get; set; }

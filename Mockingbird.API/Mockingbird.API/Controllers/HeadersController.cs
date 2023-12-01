@@ -1,6 +1,5 @@
-using System.Data.Entity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.IdentityModel.Tokens;
+using Microsoft.EntityFrameworkCore;
 using Mockingbird.API.Database;
 using Mockingbird.API.DTO;
 
@@ -13,8 +12,7 @@ public class HeadersController: BaseController
     [HttpGet]
     public async Task<IResult> GetHeaders(Guid? responseId = null, int headerId = -1)
     {
-        IQueryable<Header> query = _carrierContext.Headers.AsQueryable()
-            .Include(header => header.ResponseId);
+        IQueryable<Header> query = _carrierContext.Headers.AsQueryable();
 
         if (responseId != null)
         {
@@ -26,7 +24,7 @@ public class HeadersController: BaseController
             query = query.Where(header => header.HeaderId == headerId);
         }
 
-        var result = query.ToList();
+        var result = await query.ToListAsync();
 
         if (result.Count == 0)
         {

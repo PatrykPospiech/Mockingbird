@@ -52,16 +52,23 @@ public class DTOMapper
             .Select(MapApiResourceToDTO)
             .ToList();
     }
-
-    public static List<MethodDTO> MapMethodsToDTO(ICollection<Method> methods)
+    
+    public static MethodDTO MapMethodToDTO(Method method)
     {
-        return methods?.Select(method => new MethodDTO
+        return new MethodDTO
         {
             MethodId = method.MethodId,
             Name = method.Name,
             MethodType = method.MethodType,
             Responses = MapResponsesToDTO(method.Responses)
-        }).ToList();
+        };
+    }
+
+    public static List<MethodDTO> MapMethodsToDTO(ICollection<Method> methods)
+    {
+        return methods?
+            .Select(MapMethodToDTO)
+            .ToList();
     }
 
     public static List<ResponseDTO> MapResponsesToDTO(ICollection<Response> responses)
