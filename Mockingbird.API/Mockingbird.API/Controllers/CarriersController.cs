@@ -9,7 +9,7 @@ namespace Mockingbird.API.Controllers;
 [Route("mockingbird/[controller]")]
 public class CarriersController : ControllerBase
 {
-    private CarrierContext _carrierContext;
+    private readonly CarrierContext _carrierContext;
 
     public CarriersController(CarrierContext carrierContext)
     {
@@ -21,34 +21,34 @@ public class CarriersController : ControllerBase
     {
         if (carrierId > -1)
         {
-            var carrier = _carrierContext.Carriers.FirstOrDefault(carrier => carrier.CarrierId == carrierId);
+            var carrier = _carrierContext.Carriers.Include(carrier => carrier.Options)
+                .Include(carrier => carrier.ApiResources)
+                    .ThenInclude(apiResource => apiResource.Methods)
+                        .ThenInclude(method => method.Responses)
+                            .ThenInclude(response => response.Headers)
+                .FirstOrDefault(carrier => carrier.CarrierId == carrierId);
 
             if (carrier == null)
             {
                 return TypedResults.NotFound($"Carrier with ID: \'{carrierId}\' does not exist.");
             }
             
-            return TypedResults.Ok(carrier);
+            return TypedResults.Ok(DTOMapper.MapCarrierToDTO(carrier));
         }
 
-        var carriers = await _carrierContext.Carriers
-            .Select(carrier => new CarrierOutputDTO()
-            {
-                CarrierId = carrier.CarrierId,
-                Name = carrier.Name,
-                Nickname = carrier.Nickname,
-                Icon = carrier.Icon,
-                Options = carrier.Options,
-                ApiResources = carrier.ApiResources,
-            })
-            .ToListAsync();
+        var carriers = await _carrierContext.Carriers.Include(carrier => carrier.Options)
+                .Include(carrier => carrier.ApiResources)
+                    .ThenInclude(apiResource => apiResource.Methods)
+                        .ThenInclude(method => method.Responses)
+                            .ThenInclude(response => response.Headers)
+                .ToListAsync();
 
-        
-        return TypedResults.Ok(carriers);
+
+        return TypedResults.Ok(carriers.Select(DTOMapper.MapCarrierToDTO));
     }
 
     [HttpPost]
-    public async Task<IResult> PostCarrier(CarrierInputDTO carrier)
+    public async Task<IResult> PostCarrier(CarrierDTO carrier)
     {
         try
         {
@@ -56,24 +56,46 @@ public class CarriersController : ControllerBase
             {
                 return TypedResults.BadRequest();
             }
+            
+            var icon = carrier.Icon != null ? Convert.FromBase64String(carrier.Icon) : null;
+            var options = carrier.Options.Select(option => new Option{ Name = option.Name, Value = option.Value }).ToList();
+            
+            var apiResources = (carrier.ApiResources ?? new List<ApiResourceDTO>()).Select(apiResource => new ApiResource
+            {
+                Name = apiResource.Name,
+                Url = apiResource.Url,
+                Methods = (apiResource.Methods).Select(method => new Method
+                {
+                    Name = method.Name,
+                    MethodType = method.MethodType,
+                    Responses = method.Responses?
+                        .Select(response => new Response
+                        {
+                            ResponseId = Guid.NewGuid().ToString(),
+                            IsActive = response.IsActive ?? false,
+                            ResponseStatusCode = response.ResponseStatusCode,
+                            ResponseBody = response.ResponseBody,
+                            Headers = response.Headers?
+                                .Select(header => new Header
+                                {
+                                    Name = header.Name,
+                                    Value = header.Value
+                                }).ToList() ?? new List<Header>()
+                        }).ToList() ?? new List<Response>()
+                }).ToList() ?? new List<Method>()
+            }).ToList() ?? new List<ApiResource>();
 
             var createdCarrier = await _carrierContext.Carriers.AddAsync(new Carrier
             {
                 Name = carrier.Name,
                 Nickname = carrier.Nickname,
-                Icon = carrier.Icon
+                Icon = icon,
+                Options = options,
+                ApiResources = apiResources
             });
             await _carrierContext.SaveChangesAsync();
 
-            return TypedResults.Ok(new CarrierOutputDTO
-            {
-                CarrierId = createdCarrier.Entity.CarrierId,
-                Name = createdCarrier.Entity.Name,
-                Nickname = createdCarrier.Entity.Nickname,
-                Icon = createdCarrier.Entity.Icon,
-                Options = createdCarrier.Entity.Options,
-                ApiResources = createdCarrier.Entity.ApiResources
-            });
+            return TypedResults.Ok(DTOMapper.MapCarrierToDTO(createdCarrier.Entity));
         }
         catch (DbUpdateException dbUpdateException)
         {

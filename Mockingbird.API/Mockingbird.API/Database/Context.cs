@@ -1,5 +1,4 @@
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Infrastructure;
 using DbContext = Microsoft.EntityFrameworkCore.DbContext;
 
 namespace Mockingbird.API.Database;
@@ -13,5 +12,7 @@ public class CarrierContext : DbContext
     public DbSet<Response> Responses { get; set; }
     public DbSet<Header> Headers { get; set; }
 
-    public CarrierContext(DbContextOptions<CarrierContext> options) : base(options) { }
+    public CarrierContext(DbContextOptions<CarrierContext> options) : base(options)
+    {
+    }
 }

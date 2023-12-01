@@ -143,15 +143,16 @@ namespace Mockingbird.API.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Value")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.HasKey("OptionId");
 
-                    b.HasIndex("CarrierId");
+                    b.HasIndex("CarrierId", "Name", "Value")
+                        .IsUnique();
 
                     b.ToTable("Options");
                 });

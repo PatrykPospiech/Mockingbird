@@ -1,6 +1,7 @@
 using System.Net;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 using Microsoft.EntityFrameworkCore;
-using System.Net;
 using Mockingbird.API;
 using Mockingbird.API.Database;
 
@@ -12,9 +13,8 @@ var app = builder.Build();
 
 var scope = app.Services.CreateScope();
 var context = scope.ServiceProvider.GetService<CarrierContext>();
-context.Database.EnsureCreated();
 context.Database.Migrate();
-    
+
 app.MapControllerRoute(
     name: "configuration",
     pattern: "mockingbird/{controller}");

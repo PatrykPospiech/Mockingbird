@@ -5,7 +5,7 @@
 namespace Mockingbird.API.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialCreate : Migration
+    public partial class InitialDBCreate : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -16,9 +16,9 @@ namespace Mockingbird.API.Migrations
                 {
                     CarrierId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Nickname = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Icon = table.Column<byte[]>(type: "varbinary(max)", nullable: false)
+                    Name = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    Nickname = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    Icon = table.Column<byte[]>(type: "varbinary(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -52,8 +52,8 @@ namespace Mockingbird.API.Migrations
                 {
                     OptionId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Value = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    Value = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     CarrierId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -73,8 +73,8 @@ namespace Mockingbird.API.Migrations
                 {
                     MethodId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    MethodType = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    MethodType = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     ApiResourceId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -94,7 +94,7 @@ namespace Mockingbird.API.Migrations
                 {
                     ResponseId = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     IsActive = table.Column<bool>(type: "bit", nullable: false),
-                    ResponseStatusCode = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ResponseStatusCode = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     ResponseBody = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     MethodId = table.Column<int>(type: "int", nullable: false)
                 },
@@ -136,19 +136,27 @@ namespace Mockingbird.API.Migrations
                 column: "CarrierId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Carriers_Name_Nickname",
+                table: "Carriers",
+                columns: new[] { "Name", "Nickname" },
+                unique: true);
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Headers_ResponseId1",
                 table: "Headers",
                 column: "ResponseId1");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Method_ApiResourceId",
+                name: "IX_Method_ApiResourceId_Name_MethodType",
                 table: "Method",
-                column: "ApiResourceId");
+                columns: new[] { "ApiResourceId", "Name", "MethodType" },
+                unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_Options_CarrierId",
+                name: "IX_Options_CarrierId_Name_Value",
                 table: "Options",
-                column: "CarrierId");
+                columns: new[] { "CarrierId", "Name", "Value" },
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_Responses_MethodId",

@@ -11,8 +11,8 @@ using Mockingbird.API.Database;
 namespace Mockingbird.API.Migrations
 {
     [DbContext(typeof(CarrierContext))]
-    [Migration("20231128142820_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20231130134144_InitialDBCreate")]
+    partial class InitialDBCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -59,18 +59,20 @@ namespace Mockingbird.API.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CarrierId"));
 
                     b.Property<byte[]>("Icon")
-                        .IsRequired()
                         .HasColumnType("varbinary(max)");
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Nickname")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.HasKey("CarrierId");
+
+                    b.HasIndex("Name", "Nickname")
+                        .IsUnique();
 
                     b.ToTable("Carriers");
                 });
@@ -117,15 +119,16 @@ namespace Mockingbird.API.Migrations
 
                     b.Property<string>("MethodType")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.HasKey("MethodId");
 
-                    b.HasIndex("ApiResourceId");
+                    b.HasIndex("ApiResourceId", "Name", "MethodType")
+                        .IsUnique();
 
                     b.ToTable("Method");
                 });
@@ -143,15 +146,16 @@ namespace Mockingbird.API.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Value")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.HasKey("OptionId");
 
-                    b.HasIndex("CarrierId");
+                    b.HasIndex("CarrierId", "Name", "Value")
+                        .IsUnique();
 
                     b.ToTable("Options");
                 });
@@ -172,7 +176,6 @@ namespace Mockingbird.API.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ResponseStatusCode")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ResponseId");
