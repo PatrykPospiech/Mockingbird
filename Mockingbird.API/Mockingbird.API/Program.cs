@@ -18,7 +18,7 @@ context.Database.Migrate();
     
 app.MapControllerRoute(
     name: "configuration",
-    pattern: "mockingbird/{controller}");
+    pattern: "{controller}");
 
 app.UseMiddleware<ProxyMiddleware>();
 

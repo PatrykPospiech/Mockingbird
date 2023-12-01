@@ -8,7 +8,7 @@ namespace Mockingbird.API.ReverseProxy
     private static readonly HttpClient _httpClient = new HttpClient();
     private readonly RequestDelegate _nextMiddleware;
     private readonly ILogger<ProxyMiddleware> _logger;
-
+    
     public ProxyMiddleware(RequestDelegate nextMiddleware, ILogger<ProxyMiddleware> logger)
     {
       _nextMiddleware = nextMiddleware;

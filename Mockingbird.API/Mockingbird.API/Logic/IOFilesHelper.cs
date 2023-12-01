@@ -16,4 +16,14 @@ public static class IOFilesHelper
             fs.Write(info, 0, info.Length);
         }
     }
+
+    public static string DecodeBase64ToFile(string base64)
+    {
+        byte[] fileBytes = Convert.FromBase64String(base64);
+
+        string tempFilePath = Path.Combine(Path.GetTempPath(), $"{Guid.NewGuid()}.json");
+        File.WriteAllBytes(tempFilePath, fileBytes);
+
+        return tempFilePath;
+    }
 }

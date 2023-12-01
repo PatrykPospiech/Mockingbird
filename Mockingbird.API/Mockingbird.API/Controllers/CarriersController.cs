@@ -5,9 +5,7 @@ using Mockingbird.API.DTO;
 
 namespace Mockingbird.API.Controllers;
 
-[ApiController]
-[Route("mockingbird/[controller]")]
-public class CarriersController : ControllerBase
+public class CarriersController : BaseController
 {
     private CarrierContext _carrierContext;
 

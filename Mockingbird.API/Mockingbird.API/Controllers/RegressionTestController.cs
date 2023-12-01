@@ -2,7 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Mockingbird.API.Controllers;
 
-public class RegressionTestController : ControllerBase
+public class RegressionTestController : BaseController
 {
     [HttpGet("{carrierId}")]
     public async Task<IResult> GetRegressionTests(Guid carrierId)
