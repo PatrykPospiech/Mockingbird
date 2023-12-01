@@ -12,7 +12,7 @@ public record OptionDTO
     public int? OptionId { get; init; }
     
     [JsonPropertyName("name")]
-    public string Name { get; init; }
+    public string? Name { get; init; }
     
     [JsonPropertyName("value")]
     public string Value { get; set; }

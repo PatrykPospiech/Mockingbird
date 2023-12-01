@@ -4,6 +4,10 @@ namespace Mockingbird.API.DTO;
 
 public record ApiResourceDTO
 {
+    [JsonPropertyName("carrier_id")]
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+    public int? CarrierId { get; init; }
+    
     [JsonPropertyName("api_resource_id")]
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     public int? ApiResourceId { get; init; }
@@ -13,7 +17,7 @@ public record ApiResourceDTO
     
     [JsonPropertyName("url")]
     public string Url { get; set; }
-    
+
     [JsonPropertyName("methods")]
     public ICollection<MethodDTO> Methods { get; set; } 
 }

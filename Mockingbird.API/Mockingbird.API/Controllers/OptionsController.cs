@@ -5,16 +5,11 @@ using Mockingbird.API.DTO;
 
 namespace Mockingbird.API.Controllers;
 
-[ApiController]
-[Route("mockingbird/[controller]")]
-public class OptionsController
+public class OptionsController : BaseController
 {
-    
-    private readonly CarrierContext _carrierContext;
 
-    public OptionsController(CarrierContext carrierContext)
+    public OptionsController(CarrierContext carrierContext): base(carrierContext)
     {
-        _carrierContext = carrierContext;
     }
 
     [HttpGet]
@@ -43,11 +38,16 @@ public class OptionsController
     }
 
     [HttpPost]
-    public async Task<IResult> PostOption(OptionDTO option)
+    public async Task<IResult> PostOption(int carrierId, OptionDTO option)
     {
         try
         {
-            var carrier = await _carrierContext.Carriers.SingleOrDefaultAsync(carrier => carrier.CarrierId == option.CarrierId);
+            if (carrierId == null || carrierId == 0)
+            {
+                return TypedResults.BadRequest("Carrier ID missing in the query");
+            }
+            
+            var carrier = await _carrierContext.Carriers.FirstOrDefaultAsync(carrier => carrier.CarrierId == carrierId);
 
             if (carrier == null)
             {
@@ -77,7 +77,7 @@ public class OptionsController
             if (dbUpdateException.InnerException.Message.Contains("Cannot insert duplicate key row in object"))
             {
                 return TypedResults.Conflict(
-                    $"The option for carrier id: \'{option.CarrierId}\' and provided name: \'{option.Name}\' and value: \'{option.Value}\' already exists.");
+                    $"The option for carrier id: \'{carrierId}\' and provided name: \'{option.Name}\' and value: \'{option.Value}\' already exists.");
             }
         }
         catch (Exception ex)
@@ -96,7 +96,7 @@ public class OptionsController
             return TypedResults.Problem("OptionId has to be provided!");
         }
 
-        var option = await _carrierContext.Options.SingleOrDefaultAsync(option => option.OptionId == optionId);
+        var option = await _carrierContext.Options.FirstOrDefaultAsync(option => option.OptionId == optionId);
 
         if (option == null)
         {

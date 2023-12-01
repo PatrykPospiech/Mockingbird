@@ -18,16 +18,6 @@ public class DTOMapper
         };
     }
 
-    public static List<OptionDTO> MapOptionsToDTO(ICollection<Option> options)
-    {
-        return options?.Select(option => new OptionDTO
-        {
-            OptionId = option.OptionId,
-            Name = option.Name,
-            Value = option.Value
-        }).ToList();
-    }
-    
     public static OptionDTO MapOptionToDTO(Option option)
     {
         return new OptionDTO
@@ -37,16 +27,30 @@ public class DTOMapper
             Value = option.Value
         };
     }
-
-    public static List<ApiResourceDTO> MapApiResourcesToDTO(ICollection<ApiResource> apiResources)
+    
+    public static List<OptionDTO> MapOptionsToDTO(ICollection<Option> options)
     {
-        return apiResources?.Select(apiResource => new ApiResourceDTO()
+        return options?
+            .Select(MapOptionToDTO)
+            .ToList();
+    }
+
+    public static ApiResourceDTO MapApiResourceToDTO(ApiResource apiResource)
+    {
+        return new ApiResourceDTO
         {
             ApiResourceId = apiResource.ApiResourceId,
             Name = apiResource.Name,
             Url = apiResource.Url,
             Methods = MapMethodsToDTO(apiResource.Methods)
-        }).ToList();
+        };
+    }
+
+    public static List<ApiResourceDTO> MapApiResourcesToDTO(ICollection<ApiResource> apiResources)
+    {
+        return apiResources?
+            .Select(MapApiResourceToDTO)
+            .ToList();
     }
 
     public static List<MethodDTO> MapMethodsToDTO(ICollection<Method> methods)

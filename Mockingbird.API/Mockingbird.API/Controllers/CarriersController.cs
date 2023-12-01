@@ -7,42 +7,32 @@ namespace Mockingbird.API.Controllers;
 
 public class CarriersController : BaseController
 {
-    private readonly CarrierContext _carrierContext;
-
-    public CarriersController(CarrierContext carrierContext)
+    public CarriersController(CarrierContext carrierContext) : base(carrierContext)
     {
-        _carrierContext = carrierContext;
     }
 
     [HttpGet]
     public async Task<IResult> GetCarriers(int carrierId = -1)
     {
+        IQueryable<Carrier> query = _carrierContext.Carriers.AsQueryable()
+            .Include(carrier => carrier.Options)
+            .Include(carrier => carrier.ApiResources)
+            .ThenInclude(apiResource => apiResource.Methods)
+            .ThenInclude(method => method.Responses)
+            .ThenInclude(response => response.Headers);
+
         if (carrierId > -1)
         {
-            var carrier = _carrierContext.Carriers.Include(carrier => carrier.Options)
-                .Include(carrier => carrier.ApiResources)
-                    .ThenInclude(apiResource => apiResource.Methods)
-                        .ThenInclude(method => method.Responses)
-                            .ThenInclude(response => response.Headers)
-                .FirstOrDefault(carrier => carrier.CarrierId == carrierId);
-
-            if (carrier == null)
-            {
-                return TypedResults.NotFound($"Carrier with ID: \'{carrierId}\' does not exist.");
-            }
-            
-            return TypedResults.Ok(DTOMapper.MapCarrierToDTO(carrier));
+            query = query.Where(carrier => carrier.CarrierId == carrierId);
         }
 
-        var carriers = await _carrierContext.Carriers.Include(carrier => carrier.Options)
-                .Include(carrier => carrier.ApiResources)
-                    .ThenInclude(apiResource => apiResource.Methods)
-                        .ThenInclude(method => method.Responses)
-                            .ThenInclude(response => response.Headers)
-                .ToListAsync();
-
-
-        return TypedResults.Ok(carriers.Select(DTOMapper.MapCarrierToDTO));
+        var result = await query.ToListAsync();
+        if (result.Count == 0)
+        {
+            return TypedResults.NotFound(carrierId > -1 ? $"Carrier with id: \'{carrierId}\' not found." : "No carriers found");
+        }
+        
+        return TypedResults.Ok(result.Select(DTOMapper.MapCarrierToDTO));
     }
 
     [HttpPost]
@@ -58,28 +48,26 @@ public class CarriersController : BaseController
             var icon = carrier.Icon != null ? Convert.FromBase64String(carrier.Icon) : null;
             var options = carrier.Options.Select(option => new Option{ Name = option.Name, Value = option.Value }).ToList();
             
-            var apiResources = (carrier.ApiResources ?? new List<ApiResourceDTO>()).Select(apiResource => new ApiResource
+            var apiResources = carrier.ApiResources?.Select(apiResource => new ApiResource
             {
                 Name = apiResource.Name,
                 Url = apiResource.Url,
-                Methods = (apiResource.Methods).Select(method => new Method
+                Methods = apiResource.Methods?.Select(method => new Method
                 {
                     Name = method.Name,
                     MethodType = method.MethodType,
-                    Responses = method.Responses?
-                        .Select(response => new Response
+                    Responses = method.Responses?.Select(response => new Response
+                    {
+                        ResponseId = Guid.NewGuid().ToString(),
+                        IsActive = response.IsActive ?? false,
+                        ResponseStatusCode = response.ResponseStatusCode,
+                        ResponseBody = response.ResponseBody,
+                        Headers = response.Headers?.Select(header => new Header
                         {
-                            ResponseId = Guid.NewGuid().ToString(),
-                            IsActive = response.IsActive ?? false,
-                            ResponseStatusCode = response.ResponseStatusCode,
-                            ResponseBody = response.ResponseBody,
-                            Headers = response.Headers?
-                                .Select(header => new Header
-                                {
-                                    Name = header.Name,
-                                    Value = header.Value
-                                }).ToList() ?? new List<Header>()
-                        }).ToList() ?? new List<Response>()
+                            Name = header.Name,
+                            Value = header.Value
+                        }).ToList() ?? new List<Header>()
+                    }).ToList() ?? new List<Response>()
                 }).ToList() ?? new List<Method>()
             }).ToList() ?? new List<ApiResource>();
 
@@ -121,7 +109,7 @@ public class CarriersController : BaseController
         
         try
         {
-            var carrierToDelete = _carrierContext.Carriers.FirstOrDefault(carrier => carrier.CarrierId == carrierId);
+            var carrierToDelete = await _carrierContext.Carriers.FirstOrDefaultAsync(carrier => carrier.CarrierId == carrierId);
 
             if (carrierToDelete == null)
             {
