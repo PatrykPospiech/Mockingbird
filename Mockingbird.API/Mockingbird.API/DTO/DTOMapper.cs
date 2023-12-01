@@ -70,17 +70,24 @@ public class DTOMapper
             .Select(MapMethodToDTO)
             .ToList();
     }
-
-    public static List<ResponseDTO> MapResponsesToDTO(ICollection<Response> responses)
+    
+    public static ResponseDTO MapResponseToDTO(Response response)
     {
-        return responses?.Select(response => new ResponseDTO
+        return new ResponseDTO
         {
             ResponseId = response.ResponseId,
             IsActive = response.IsActive,
             ResponseStatusCode = response.ResponseStatusCode,
             ResponseBody = response.ResponseBody,
             Headers = MapHeadersToDTO(response.Headers)
-        }).ToList();
+        };
+    }
+
+    public static List<ResponseDTO> MapResponsesToDTO(ICollection<Response> responses)
+    {
+        return responses?
+                .Select(MapResponseToDTO)
+                .ToList();
     }
 
     public static HeaderDTO MapHeaderToDTO(Header header)
