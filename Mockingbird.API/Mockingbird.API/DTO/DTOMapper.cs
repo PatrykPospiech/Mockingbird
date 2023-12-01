@@ -76,13 +76,20 @@ public class DTOMapper
         }).ToList();
     }
 
-    public static List<HeaderDTO> MapHeadersToDTO(ICollection<Header> headers)
+    public static HeaderDTO MapHeaderToDTO(Header header)
     {
-        return headers?.Select(header => new HeaderDTO
+        return new HeaderDTO
         {
             HeaderId = header.HeaderId,
             Name = header.Name,
             Value = header.Value
-        }).ToList();
+        };
+    }
+    
+    public static List<HeaderDTO> MapHeadersToDTO(ICollection<Header> headers)
+    {
+        return headers?
+            .Select(MapHeaderToDTO)
+            .ToList();
     }
 }

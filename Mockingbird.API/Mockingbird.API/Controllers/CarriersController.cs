@@ -16,6 +16,7 @@ public class CarriersController : BaseController
     {
         IQueryable<Carrier> query = _carrierContext.Carriers.AsQueryable()
             .Include(carrier => carrier.Options)
+            .Include(carrier => carrier.TpsCommunications)
             .Include(carrier => carrier.ApiResources)
             .ThenInclude(apiResource => apiResource.Methods)
             .ThenInclude(method => method.Responses)
