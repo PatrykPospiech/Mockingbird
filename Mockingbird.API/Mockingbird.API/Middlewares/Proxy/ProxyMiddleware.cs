@@ -9,13 +9,11 @@ namespace Mockingbird.API.ReverseProxy
     private static readonly HttpClient _httpClient = new HttpClient();
     private readonly RequestDelegate _nextMiddleware;
     private readonly ILogger<ProxyMiddleware> _logger;
-    private readonly CarrierContext _context;
 
-    public ProxyMiddleware(RequestDelegate nextMiddleware, ILogger<ProxyMiddleware> logger, CarrierContext context)
+    public ProxyMiddleware(RequestDelegate nextMiddleware, ILogger<ProxyMiddleware> logger)
     {
       _nextMiddleware = nextMiddleware;
       _logger = logger;
-      _context = context;
     }
     
     public async Task Invoke(HttpContext context)
