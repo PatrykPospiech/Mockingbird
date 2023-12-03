@@ -1,5 +1,3 @@
-import {GetCarrierList} from "../helpers/methods/carrier/carrier";
-import type {CarrierData} from "../helpers/model/carrierData";
 import {CARRIER_URL} from "../helpers/api-communication/config";
 
 // @ts-ignore
