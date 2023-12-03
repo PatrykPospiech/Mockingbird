@@ -32,18 +32,11 @@
         const request = MapPostCarrierListRequest(carrierDataFromConfig);
         console.log(request)
 
-        const res = await fetch(`${CARRIER_URL}`, {
-            method: "POST",
-            body: JSON.stringify(request.body),
-            headers: {
-                "Content-Type": "application/json"
-            }
-        })
+        const res = await fetch(`${CARRIER_URL}`, request)
 
         if(res.ok){
             popupAlert()
         }
-
     }
 
 </script>

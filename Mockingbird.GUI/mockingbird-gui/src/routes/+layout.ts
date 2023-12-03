@@ -1,5 +1,6 @@
 import {CARRIER_URL} from "../helpers/api-communication/config";
 
+//Used by layout and page
 // @ts-ignore
 export async function load({fetch}) {
 

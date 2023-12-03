@@ -1,15 +1,5 @@
 import type {CarrierData} from "../../model/carrierData";
 
-export const MapGetCarrierListRequest = (): RequestInit => {
-    return {
-        method: 'GET',
-        headers: {
-            'Content-Type': 'application/json',
-            'Access-Control-Allow-Origin': '*'
-        },
-    };
-};
-
 export const MapPostCarrierListRequest = (carrierDataFromConfig: CarrierData): RequestInit => {
     return {
         method: 'POST',
@@ -17,11 +7,11 @@ export const MapPostCarrierListRequest = (carrierDataFromConfig: CarrierData): R
             'Content-Type': 'application/json',
         },
         // @ts-ignore
-        body: GenerateBody(carrierDataFromConfig)
+        body: GeneratePostCarrierBody(carrierDataFromConfig)
     };
 };
 
-const GenerateBody = (carrierDataFromConfig: CarrierData): CarrierData => {
+const GeneratePostCarrierBody = (carrierDataFromConfig: CarrierData): CarrierData => {
     return {
         carrier_id: null,
         name: carrierDataFromConfig.name,
@@ -31,3 +21,12 @@ const GenerateBody = (carrierDataFromConfig: CarrierData): CarrierData => {
         api_resources: carrierDataFromConfig.api_resources
     }
 }
+
+export const MapGetResourcesListRequest = (): RequestInit => {
+    return {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+        }
+    };
+};
