@@ -9,7 +9,7 @@
          <span>Loading</span>
         {:then carriers}
             {#each carriers as carrier}
-                <button type="button" class="btn variant-filled bg-primary-500">
+                <button type="button" class="btn bg-gradient-to-br variant-gradient-tertiary-secondary">
                     <a href="/mocks/{carrier.carrier_id}/responses"> {carrier.name} </a>
                 </button>
             {/each}
