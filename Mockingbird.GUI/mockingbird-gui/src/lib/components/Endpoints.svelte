@@ -1,16 +1,18 @@
 <script lang="ts">
-    let endpointBaseUrl = "";
 
-    let paths:string[] = ["", ""]
+    import type {ApiResource} from "../../helpers/model/api_resources";
+    import { fly } from 'svelte/transition'
+
+    export let endpoint: ApiResource;
 
     function addInput() {
-        console.log("add paths" + paths.length)
-        paths = [...paths, ""]
+        endpoint.methods = [...endpoint.methods || [], { name: "", method_id:null, method_type:"", responses: []}]
     }
 
 </script>
 
-<div class="my-2 shadow rounded-lg card">
+{#if endpoint}
+<div class="my-2 shadow rounded-lg card" transition:fly={{ x: 300, duration: 1000}}>
     <div class="card-header">
         <h1 class="flex justify-center content-center text-3xl">Configure endpoints</h1>
     </div>
@@ -19,16 +21,16 @@
         <label class="label">
             <span>Endpoint</span>
             <input class="form-control w-full px-3 py-2 rounded-lg shadow-sm"
-                   type="text" placeholder="Endpoint" required bind:value={endpointBaseUrl}/>
+                   type="text" placeholder="Endpoint" required bind:value={endpoint.url}/>
         </label>
     </div>
 
-    {#each paths as path, index}
-        <label class="label">
+    {#each endpoint.methods || [] as path, index}
+        <label class="label" transition:fly={{x:300, duration:500}}>
             <span>Path number: {index + 1} </span>
             <input required
                    class="input w-full border px-3 py-2 rounded-lg shadow-sm"
-                   type="text" bind:value={path}/>
+                   type="text" bind:value={path.name}/>
         </label>
      {/each}
 
@@ -36,3 +38,4 @@
         <span>Add path</span>
     </button>
 </div>
+{/if}

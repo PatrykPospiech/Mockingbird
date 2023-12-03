@@ -12,12 +12,23 @@ builder.Services.AddDbContext<CarrierContext>(options => options.UseSqlServer(bu
 //builder.Services.AddDbContext<CarrierContext>(options => options.UseInMemoryDatabase("Test"));
 builder.Services.AddControllers();
 builder.Services.AddScoped<MiddlewareReqResCache>();
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("policy", p =>
+    {
+        p.AllowAnyOrigin();
+        p.AllowAnyHeader();
+        p.AllowAnyMethod();
+    });
+});
 
 var app = builder.Build();
 
 // var scope = app.Services.CreateScope();
 // var context = scope.ServiceProvider.GetService<CarrierContext>();
 // context.Database.Migrate();
+
+app.UseCors("policy");
 
 app.MapControllerRoute(
     name: "configuration",

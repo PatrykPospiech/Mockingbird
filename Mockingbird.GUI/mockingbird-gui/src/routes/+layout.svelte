@@ -1,7 +1,6 @@
 <script lang="ts">
     import "../app.pcss";
     import {AppShell} from '@skeletonlabs/skeleton';
-    import type {CarrierData} from "../helpers/model/carrierData";
 
     export let data;
 
@@ -16,20 +15,19 @@
     <svelte:fragment slot="sidebarLeft">
         <div class="bg-surface-800 min-h-full">
             <div class="btn-group-vertical variant-filled p-2 m-1 bg-primary-500">
-                {#await data.streamed.carriers}
-                    {:then carriers}
-                {#each carriers as carrier (carrier.carrier_id)}
-                    <div>
-                        <a href="/mocks/{carrier.carrier_id}/responses"> {carrier.name} </a>
-                    </div>
-                {/each  }
+                {#await data.carriers}
+                {:then carriers}
+                    {#each carriers as carrier}
+                        {#key carrier.carrier_id}
+                            <div>
+                                <a href="/mocks/{carrier.carrier_id}/responses"> {carrier.name} </a>
+                            </div>
+                        {/key}
+                    {/each}
                 {/await}
             </div>
         </div>
     </svelte:fragment>
-    <!-- (sidebarRight) -->
-    <!-- (pageHeader) -->
-    <!-- Router Slot -->
     <slot>
 
     </slot>

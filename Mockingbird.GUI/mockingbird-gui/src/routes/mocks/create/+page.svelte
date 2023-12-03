@@ -2,44 +2,47 @@
 
     import type {CarrierData} from "../../../helpers/model/carrierData";
     import Endpoints from "$lib/components/Endpoints.svelte";
+    import {MapPostCarrierListRequest} from "../../../helpers/methods/carrier/mapping";
+    import type {ApiResource} from "../../../helpers/model/api_resources";
+    import {CARRIER_URL} from "../../../helpers/api-communication/config";
 
-    let endpoints: string[] = [];
-    let currentEndpoint: string = "";
+    let endpoints: ApiResource[] = [];
     let carrierName: string;
     let nickname: string;
     let carrierLogo: object;
-    let carrierDataFromConfig: CarrierData;
+    let carrierDataFromConfig: CarrierData
 
     const popupAlert = () => {
-        console.log("hehehehehe")
         alert('Data saved')
     };
 
     const addEndpoint = () => {
-        endpoints = [...endpoints, currentEndpoint]
-
-        popupAlert()
+        endpoints = [...endpoints, {name: "", url: "", methods: [], api_resource_id:null}]
     }
 
-    const addInput = () => {
-        console.log("hehe")
-    }
-
-    const addCarrierData = () => {
-
-        console.log("hehe")
+    const addCarrierData = async () => {
         carrierDataFromConfig = {
-            carrier_id: '',
+            carrier_id: null,
             name: carrierName,
             nickname: nickname,
             icon: 'carrierLogo',
-            // api_resources: endpoints.map(singleEnpointConfig => {
-            //     name: singleEnpointConfig.
-            // })
+            api_resources: endpoints
+        }
+        const request = MapPostCarrierListRequest(carrierDataFromConfig);
+        console.log(request)
+
+        const res = await fetch(`${CARRIER_URL}`, {
+            method: "POST",
+            body: JSON.stringify(request.body),
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
+
+        if(res.ok){
+            popupAlert()
         }
 
-        addEndpoint()
-        //MapPostCarrierListRequest(carrierDataFromConfig);
     }
 
 </script>
@@ -72,16 +75,19 @@
             </label>
         </div>
 
-        <button class="btn variant-filled flex justify-end mt-5" on:click={addCarrierData} type="button">
-            Save
-        </button>
+        <div class="flex flex-row justify-evenly">
+            <button class="btn variant-filled flex justify-end mt-5" on:click={addEndpoint} type="button">
+                Add endpoint
+            </button>
+        </div>
+
     </div>
-    <Endpoints on:click={addInput}/>
-
-
+    {#each endpoints as endpoint}
+        <Endpoints bind:endpoint/>
+    {/each}
 
         <div class="card-footer">
-            <button type="button" class="btn variant-filled flex justify-end" on:click={popupAlert}>
+            <button type="button" class="btn variant-filled flex justify-end" on:click={addCarrierData}>
                 <span class="btn variant-filled">Save</span>
             </button>
         </div>
