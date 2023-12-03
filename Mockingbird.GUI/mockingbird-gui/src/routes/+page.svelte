@@ -9,8 +9,8 @@
          <span>Loading</span>
         {:then carriers}
             {#each carriers as carrier}
-                <button type="button" class="btn bg-gradient-to-br variant-gradient-tertiary-secondary">
-                    <a href="/mocks/{carrier.carrier_id}/responses"> {carrier.name} </a>
+                <button type="button" class="btn bg-surface-400">
+                    <a class="text-white" href="/mocks/{carrier.carrier_id}/responses"> {carrier.name} </a>
                 </button>
             {/each}
         {/await}

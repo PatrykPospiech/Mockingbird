@@ -5,6 +5,7 @@
     import {MapPostCarrierListRequest} from "../../../helpers/methods/carrier/mapping";
     import type {ApiResource} from "../../../helpers/model/api_resources";
     import {CARRIER_URL} from "../../../helpers/api-communication/config";
+    import { FileButton } from '@skeletonlabs/skeleton';
 
     let endpoints: ApiResource[] = [];
     let carrierName: string;
@@ -51,7 +52,7 @@
 
     <div class="space-y-4 p-2 shadow rounded-lg card">
         <div class="card-header">
-            <h1 class="flex justify-center content-center text-3xl">Configure mock</h1>
+            <h1 class="flex justify-center content-center text-3xl text-surface-500">Configure mock</h1>
         </div>
         <div class="m-2 px-2">
             <label class="label">
@@ -67,17 +68,13 @@
                        type="text" placeholder="Nickname" bind:value="{nickname}"/>
             </label>
 
-            <label class="label">
-                <span>Carrier logo</span>
-                <input required
-                       class="form-control w-full px-3 py-2 rounded-lg shadow-sm bg-white"
-                       type="file" placeholder="Carrier logo" bind:value={carrierLogo}/>
-            </label>
+            <span>Carrier logo</span>
+            <FileButton class="pt-2 text-white" name="files" button="btn bg-surface-400" bind:value={carrierLogo}>Upload</FileButton>
         </div>
 
         <div class="flex flex-row justify-evenly">
-            <button class="btn variant-filled flex justify-end mt-5" on:click={addEndpoint} type="button">
-                Add endpoint
+            <button class="btn bg-surface-400 flex justify-end mt-5" on:click={addEndpoint} type="button">
+                <span class="text-white">Add endpoint</span>
             </button>
         </div>
 
@@ -87,8 +84,8 @@
     {/each}
 
         <div class="card-footer">
-            <button type="button" class="btn variant-filled flex justify-end" on:click={addCarrierData}>
-                <span class="btn variant-filled">Save</span>
+            <button type="button" class="btn bg-surface-400 flex justify-end mt-2" on:click={addCarrierData}>
+                <span class="text-surface-50">Save</span>
             </button>
         </div>
     </div>
