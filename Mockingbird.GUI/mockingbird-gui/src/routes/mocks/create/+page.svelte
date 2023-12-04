@@ -30,9 +30,14 @@
             api_resources: endpoints
         }
         const request = MapPostCarrierListRequest(carrierDataFromConfig);
-        console.log(request)
 
-        const res = await fetch(`${CARRIER_URL}`, request)
+        const res = await fetch(`${CARRIER_URL}`, {
+            method: "POST",
+            body: JSON.stringify(request.body),
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
 
         if(res.ok){
             popupAlert()

@@ -33,7 +33,7 @@ export async function load({fetch, params, }) {
 
     try {
         const carrierResources = await res.json();
-        console.log('RESOURCEv121232313' + JSON.stringify(carrierResources))
+        console.log('RESOURCE' + JSON.stringify(carrierResources))
         return {
             ok: true,
             carrierResources

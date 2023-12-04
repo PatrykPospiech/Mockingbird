@@ -13,6 +13,7 @@ export async function load({fetch}) {
     };
 
     const resp = await fetch(CARRIER_URL, request);
+    console.log("RESPONSE LOAD" + JSON.stringify(resp))
 
     try {
         const carriers = await resp.json();
