@@ -1,0 +1,3725 @@
+{
+	"info": {
+		"_postman_id": "46e2496a-7902-495b-abe1-128c310abf45",
+		"name": "MockingBird",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26671901"
+	},
+	"item": [
+		{
+			"name": "Carrier",
+			"item": [
+				{
+					"name": "GetCarrier",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{mockingbirdUrl}}/mockingbird/carriers?carrierId=10",
+							"host": [
+								"{{mockingbirdUrl}}"
+							],
+							"path": [
+								"mockingbird",
+								"carriers"
+							],
+							"query": [
+								{
+									"key": "carrierId",
+									"value": "10"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetCarriers",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{mockingbirdUrl}}/mockingbird/carriers",
+							"host": [
+								"{{mockingbirdUrl}}"
+							],
+							"path": [
+								"mockingbird",
+								"carriers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CreateCarrier",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"HanVan132\",\n  \"nickname\": \"HanVanAwesome312\",\n  \"options\": [\n    {\n      \"name\": \"string\",\n      \"value\": \"string\"\n    }\n  ],\n  \"api_resources\": [\n    {\n      \"name\": \"hanVan website\",\n      \"url\": \"hanVan.com\",\n      \"methods\": [\n        {\n          \"name\": \"Auth\",\n          \"method_type\": \"Post\",\n          \"responses\": [\n            {\n              \"is_active\": true,\n              \"resposnse_status_code\": \"200\",\n              \"response_body\": \"example response body\",\n              \"headers\": [\n                {\n                  \"name\": \"Content-Type\",\n                  \"value\": \"application/json\"\n                }\n              ]\n            }\n          ]\n        }\n      ]\n    }\n  ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{mockingbirdUrl}}/mockingbird/carriers",
+							"host": [
+								"{{mockingbirdUrl}}"
+							],
+							"path": [
+								"mockingbird",
+								"carriers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CreateCarrier Copy",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"step by step 2\",\n  \"nickname\": \"test for step by step 2\",\n  \"options\": [\n    {\n      \"name\": \"option1\",\n      \"value\": \"value1\"\n    },\n        {\n      \"name\": \"option2\",\n      \"value\": \"value2\"\n    },\n        {\n      \"name\": \"option3\",\n      \"value\": \"value3\"\n    }\n  ],\n  \"api_resources\": [\n    {\n      \"name\": \"hanVan website\",\n      \"url\": \"hanVan.com\",\n      \"methods\": [\n        {\n          \"name\": \"Auth\",\n          \"method_type\": \"Post\",\n          \"responses\": [\n            {\n              \"is_active\": true,\n              \"resposnse_status_code\": \"200\",\n              \"response_body\": \"example response body\",\n              \"headers\": [\n                {\n                  \"name\": \"Content-Type\",\n                  \"value\": \"application/json\"\n                }\n              ]\n            }\n          ]\n        }\n      ]\n    }\n  ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/mockingbird/carriers",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"mockingbird",
+								"carriers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CreateCarrier base level",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"step by step carrier\",\n    \"nickname\": \"test for step by step carrier\",\n    \"options\": [],\n    \"api_resources\": []\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{mockingbirdUrl}}/mockingbird/carriers",
+							"host": [
+								"{{mockingbirdUrl}}"
+							],
+							"path": [
+								"mockingbird",
+								"carriers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteCarrier",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/mockingbird/carriers?carrierId=1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"mockingbird",
+								"carriers"
+							],
+							"query": [
+								{
+									"key": "carrierId",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Options",
+			"item": [
+				{
+					"name": "GetOptions",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{mockingbirdUrl}}/mockingbird/options",
+							"host": [
+								"{{mockingbirdUrl}}"
+							],
+							"path": [
+								"mockingbird",
+								"options"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetOptionsByCarrier",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{mockingbirdUrl}}/mockingbird/options?carrierId=8",
+							"host": [
+								"{{mockingbirdUrl}}"
+							],
+							"path": [
+								"mockingbird",
+								"options"
+							],
+							"query": [
+								{
+									"key": "carrierId",
+									"value": "8"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetOptionsByCarrierByOptionId",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{mockingbirdUrl}}/mockingbird/options?carrierId=5&optionId=5",
+							"host": [
+								"{{mockingbirdUrl}}"
+							],
+							"path": [
+								"mockingbird",
+								"options"
+							],
+							"query": [
+								{
+									"key": "carrierId",
+									"value": "5"
+								},
+								{
+									"key": "optionId",
+									"value": "5"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetOptionById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{mockingbirdUrl}}/mockingbird/options?optionId=6",
+							"host": [
+								"{{mockingbirdUrl}}"
+							],
+							"path": [
+								"mockingbird",
+								"options"
+							],
+							"query": [
+								{
+									"key": "optionId",
+									"value": "6"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteOption",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{mockingbirdUrl}}/mockingbird/options?optionId=15",
+							"host": [
+								"{{mockingbirdUrl}}"
+							],
+							"path": [
+								"mockingbird",
+								"options"
+							],
+							"query": [
+								{
+									"key": "optionId",
+									"value": "15"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "AddOption",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"testoption1\",\n    \"value\": \"testvalue3\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{mockingbirdUrl}}/mockingbird/options?carrierId=8",
+							"host": [
+								"{{mockingbirdUrl}}"
+							],
+							"path": [
+								"mockingbird",
+								"options"
+							],
+							"query": [
+								{
+									"key": "carrierId",
+									"value": "8"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Option",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"testoption\",\n    \"value\": \"testvalue\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{mockingbirdUrl}}/mockingbird/options?carrierId=8",
+							"host": [
+								"{{mockingbirdUrl}}"
+							],
+							"path": [
+								"mockingbird",
+								"options"
+							],
+							"query": [
+								{
+									"key": "carrierId",
+									"value": "8"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Option Copy",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"testoption3\",\n    \"value\": \"testvalue3\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{mockingbirdUrl}}/mockingbird/options?carrierId=8&optionId=19",
+							"host": [
+								"{{mockingbirdUrl}}"
+							],
+							"path": [
+								"mockingbird",
+								"options"
+							],
+							"query": [
+								{
+									"key": "carrierId",
+									"value": "8"
+								},
+								{
+									"key": "optionId",
+									"value": "19"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "ApiResources",
+			"item": [
+				{
+					"name": "GetResources",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{mockingbirdUrl}}/mockingbird/resources",
+							"host": [
+								"{{mockingbirdUrl}}"
+							],
+							"path": [
+								"mockingbird",
+								"resources"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetResources Copy",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{mockingbirdUrl}}/mockingbird/resources",
+							"host": [
+								"{{mockingbirdUrl}}"
+							],
+							"path": [
+								"mockingbird",
+								"resources"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetResourcesByCarrierId",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{mockingbirdUrl}}/mockingbird/resources?carrierId=8",
+							"host": [
+								"{{mockingbirdUrl}}"
+							],
+							"path": [
+								"mockingbird",
+								"resources"
+							],
+							"query": [
+								{
+									"key": "carrierId",
+									"value": "8"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetResourcesByResrouceId",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{mockingbirdUrl}}/mockingbird/resources?resourceId=5",
+							"host": [
+								"{{mockingbirdUrl}}"
+							],
+							"path": [
+								"mockingbird",
+								"resources"
+							],
+							"query": [
+								{
+									"key": "resourceId",
+									"value": "5"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteResource",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{mockingbirdUrl}}/mockingbird/resources?resourceId=2&carrierId=3",
+							"host": [
+								"{{mockingbirdUrl}}"
+							],
+							"path": [
+								"mockingbird",
+								"resources"
+							],
+							"query": [
+								{
+									"key": "resourceId",
+									"value": "2"
+								},
+								{
+									"key": "carrierId",
+									"value": "3"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "AddResource",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\n  \"name\": \"03\",\n  \"url\": \"strin44g\",\n  \"methods\": [\n    {\n      \"name\": \"POST\",\n      \"method_type\": \"POST\",\n      \"responses\": [\n        {\n          \"is_active\": false,\n          \"response_status_code\": \"string\",\n          \"response_body\": \"string\",\n          \"headers\": [\n            {\n              \"name\": \"string\",\n              \"value\": \"string\"\n            }\n          ]\n        }\n      ]\n    }\n  ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{mockingbirdUrl}}/mockingbird/resources?carrierId=10",
+							"host": [
+								"{{mockingbirdUrl}}"
+							],
+							"path": [
+								"mockingbird",
+								"resources"
+							],
+							"query": [
+								{
+									"key": "carrierId",
+									"value": "10"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "AddResource Copy",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"04\",\n    \"url\": \"string55\",\n    \"methods\": [\n        {\n            \"name\": \"delete\",\n            \"method_type\": \"DELETE\",\n            \"responses\": [\n                {\n                    \"is_active\": false,\n                    \"response_status_code\": \"string44\",\n                    \"response_body\": \"string44\",\n                    \"headers\": [\n                        {\n                            \"name\": \"string\",\n                            \"value\": \"string\"\n                        }\n                    ]\n                }\n            ]\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{mockingbirdUrl}}/mockingbird/resources?carrierId=10",
+							"host": [
+								"{{mockingbirdUrl}}"
+							],
+							"path": [
+								"mockingbird",
+								"resources"
+							],
+							"query": [
+								{
+									"key": "carrierId",
+									"value": "10"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "AddResource step by step",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\n  \"name\": \"03\",\n  \"url\": \"strin44g\",\n  \"methods\": [\n  ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{mockingbirdUrl}}/mockingbird/resources?carrierId=10",
+							"host": [
+								"{{mockingbirdUrl}}"
+							],
+							"path": [
+								"mockingbird",
+								"resources"
+							],
+							"query": [
+								{
+									"key": "carrierId",
+									"value": "10"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Resource",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"url\": \"testvalue2\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{mockingbirdUrl}}/mockingbird/resources?apiResourceId=5",
+							"host": [
+								"{{mockingbirdUrl}}"
+							],
+							"path": [
+								"mockingbird",
+								"resources"
+							],
+							"query": [
+								{
+									"key": "apiResourceId",
+									"value": "5"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Headers",
+			"item": [
+				{
+					"name": "GetHeaders",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{mockingbirdUrl}}/mockingbird/headers",
+							"host": [
+								"{{mockingbirdUrl}}"
+							],
+							"path": [
+								"mockingbird",
+								"headers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetHeadersByResponse",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{mockingbirdUrl}}/mockingbird/headers?responseId=86068877-5f74-4411-bf8d-04b3b9518832",
+							"host": [
+								"{{mockingbirdUrl}}"
+							],
+							"path": [
+								"mockingbird",
+								"headers"
+							],
+							"query": [
+								{
+									"key": "responseId",
+									"value": "86068877-5f74-4411-bf8d-04b3b9518832"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetHeadersByHeadersId",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{mockingbirdUrl}}/mockingbird/headers?headerId=5",
+							"host": [
+								"{{mockingbirdUrl}}"
+							],
+							"path": [
+								"mockingbird",
+								"headers"
+							],
+							"query": [
+								{
+									"key": "headerId",
+									"value": "5"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteHeader",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{mockingbirdUrl}}/mockingbird/headers?headerId=5",
+							"host": [
+								"{{mockingbirdUrl}}"
+							],
+							"path": [
+								"mockingbird",
+								"headers"
+							],
+							"query": [
+								{
+									"key": "headerId",
+									"value": "5"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "AddHeader",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"testheader\",\n    \"value\": \"testheadervalue\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{mockingbirdUrl}}/mockingbird/headers?responseId=86068877-5f74-4411-bf8d-04b3b9518832",
+							"host": [
+								"{{mockingbirdUrl}}"
+							],
+							"path": [
+								"mockingbird",
+								"headers"
+							],
+							"query": [
+								{
+									"key": "responseId",
+									"value": "86068877-5f74-4411-bf8d-04b3b9518832"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "AddHeader step by step",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"testheader333\",\n    \"value\": \"testheadervalu333e\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{mockingbirdUrl}}/mockingbird/headers?responseId=ca5add3d-fdb1-4790-0d71-08dbf53084ab",
+							"host": [
+								"{{mockingbirdUrl}}"
+							],
+							"path": [
+								"mockingbird",
+								"headers"
+							],
+							"query": [
+								{
+									"key": "responseId",
+									"value": "ca5add3d-fdb1-4790-0d71-08dbf53084ab"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateHeader",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"modified url\",\n    \"value\": \"testvalue\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{mockingbirdUrl}}/mockingbird/headers?headerId=3&methodId=3&apiResourceId=3&responseId=b05790ce-7cf3-4bdc-a1c9-f3853c248554",
+							"host": [
+								"{{mockingbirdUrl}}"
+							],
+							"path": [
+								"mockingbird",
+								"headers"
+							],
+							"query": [
+								{
+									"key": "headerId",
+									"value": "3"
+								},
+								{
+									"key": "methodId",
+									"value": "3"
+								},
+								{
+									"key": "apiResourceId",
+									"value": "3"
+								},
+								{
+									"key": "responseId",
+									"value": "b05790ce-7cf3-4bdc-a1c9-f3853c248554"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Method",
+			"item": [
+				{
+					"name": "GetMethods",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{mockingbirdUrl}}/mockingbird/methods",
+							"host": [
+								"{{mockingbirdUrl}}"
+							],
+							"path": [
+								"mockingbird",
+								"methods"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetMethodByResourceId",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{mockingbirdUrl}}/mockingbird/methods?apiResourceId=5",
+							"host": [
+								"{{mockingbirdUrl}}"
+							],
+							"path": [
+								"mockingbird",
+								"methods"
+							],
+							"query": [
+								{
+									"key": "apiResourceId",
+									"value": "5"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteMethod",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{mockingbirdUrl}}/mockingbird/methods?methodId=5",
+							"host": [
+								"{{mockingbirdUrl}}"
+							],
+							"path": [
+								"mockingbird",
+								"methods"
+							],
+							"query": [
+								{
+									"key": "methodId",
+									"value": "5"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetMethodMyMethodId",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/mockingbird/methods?methodId=1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"mockingbird",
+								"methods"
+							],
+							"query": [
+								{
+									"key": "methodId",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "AddMethod",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"TestPostMethod2\",\n    \"method_type\": \"TestMethodType\",\n    \"responses\": [\n        {\n            \"is_active\": false,\n            \"response_status_code\": \"200\",\n            \"response_body\": \"test_body\",\n            \"headers\": [\n                {\n                    \"name\": \"testHeaderName\",\n                    \"value\": \"testHeaderValue\"\n                }\n            ]\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{mockingbirdUrl}}/mockingbird/methods?apiResourceId=5",
+							"host": [
+								"{{mockingbirdUrl}}"
+							],
+							"path": [
+								"mockingbird",
+								"methods"
+							],
+							"query": [
+								{
+									"key": "apiResourceId",
+									"value": "5"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "AddMethod step by step",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"TestPostMethod2\",\n    \"method_type\": \"TestMethodType\",\n    \"responses\": [\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{mockingbirdUrl}}/mockingbird/methods?apiResourceId=12",
+							"host": [
+								"{{mockingbirdUrl}}"
+							],
+							"path": [
+								"mockingbird",
+								"methods"
+							],
+							"query": [
+								{
+									"key": "apiResourceId",
+									"value": "12"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateMethod",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"TestPostMethod2_update\",\n    \"method_type\": \"TestMethodType_update\",\n    \"responses\": [\n        {\n            \"is_active\": false,\n            \"response_status_code\": \"200\",\n            \"response_body\": \"test_body_update\",\n            \"headers\": [\n                {\n                    \"name\": \"testHeaderName\",\n                    \"value\": \"testHeaderValue\"\n                }\n            ]\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/mockingbird/methods?methodId=9",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"mockingbird",
+								"methods"
+							],
+							"query": [
+								{
+									"key": "methodId",
+									"value": "9"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Response",
+			"item": [
+				{
+					"name": "GetResponse",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{mockingbirdUrl}}/mockingbird/responses",
+							"host": [
+								"{{mockingbirdUrl}}"
+							],
+							"path": [
+								"mockingbird",
+								"responses"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetResponseByMethod",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{mockingbirdUrl}}/mockingbird/responses?methodId=9",
+							"host": [
+								"{{mockingbirdUrl}}"
+							],
+							"path": [
+								"mockingbird",
+								"responses"
+							],
+							"query": [
+								{
+									"key": "methodId",
+									"value": "9"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetResponseById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{mockingbirdUrl}}/mockingbird/responses?responseId=30e51747-7644-4e1f-0d6d-08dbf53084ab",
+							"host": [
+								"{{mockingbirdUrl}}"
+							],
+							"path": [
+								"mockingbird",
+								"responses"
+							],
+							"query": [
+								{
+									"key": "responseId",
+									"value": "30e51747-7644-4e1f-0d6d-08dbf53084ab"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "AddResponse",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"is_active\": false,\n    \"response_status_code\": \"200\",\n    \"response_body\": \"test_body\",\n    \"headers\": [\n        {\n            \"name\": \"testHeaderName\",\n            \"value\": \"testHeaderValue\"\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{mockingbirdUrl}}/mockingbird/responses?methodId=9",
+							"host": [
+								"{{mockingbirdUrl}}"
+							],
+							"path": [
+								"mockingbird",
+								"responses"
+							],
+							"query": [
+								{
+									"key": "methodId",
+									"value": "9"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "AddResponse step by step",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"is_active\": false,\n    \"response_status_code\": \"200\",\n    \"response_body\": \"test_body\",\n    \"headers\": [\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{mockingbirdUrl}}/mockingbird/responses?methodId=11",
+							"host": [
+								"{{mockingbirdUrl}}"
+							],
+							"path": [
+								"mockingbird",
+								"responses"
+							],
+							"query": [
+								{
+									"key": "methodId",
+									"value": "11"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Resource",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"is_active\": false,\n    \"response_status_code\": \"401\",\n    \"response_body\": \"updated_body\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{mockingbirdUrl}}/mockingbird/responses?responseId=01756071-536c-4085-0d70-08dbf53084ab",
+							"host": [
+								"{{mockingbirdUrl}}"
+							],
+							"path": [
+								"mockingbird",
+								"responses"
+							],
+							"query": [
+								{
+									"key": "responseId",
+									"value": "01756071-536c-4085-0d70-08dbf53084ab"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "TestSet",
+			"item": [
+				{
+					"name": "GetCarriers before import",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"No carriertestset available\", function () {\r",
+									"    pm.expect(pm.response.text()).not.to.include(\"carrier_name_testset\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{mockingbirdUrl}}/mockingbird/carriers",
+							"host": [
+								"{{mockingbirdUrl}}"
+							],
+							"path": [
+								"mockingbird",
+								"carriers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CreateCarrier",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"carrier_name_testset\",\n    \"nickname\": \"carrier_nickname_testset\",\n    \"options\": [\n        {\n            \"name\": \"option_1\",\n            \"value\": \"value_1\"\n        },\n        {\n            \"name\": \"option_2\",\n            \"value\": \"value_2\"\n        }\n    ],\n    \"api_resources\": [\n        {\n            \"name\": \"api_resources_name_1\",\n            \"url\": \"api_resources_url_1\",\n            \"methods\": [\n                {\n                    \"name\": \"method_name_1_1\",\n                    \"method_type\": \"Post\",\n                    \"responses\": [\n                        {\n                            \"is_active\": true,\n                            \"resposnse_status_code\": \"200\",\n                            \"response_body\": \"response_body_1_1_1\",\n                            \"headers\": [\n                                {\n                                    \"name\": \"header_name_1_1_1_1\",\n                                    \"value\": \"header_value_1_1_1_1\"\n                                },\n                                {\n                                    \"name\": \"header_name_1_1_1_2\",\n                                    \"value\": \"header_value_1_1_1_2\"\n                                }\n                            ]\n                        },\n                        {\n                            \"is_active\": true,\n                            \"resposnse_status_code\": \"200\",\n                            \"response_body\": \"response_body_1_1_2\",\n                            \"headers\": [\n                                {\n                                    \"name\": \"header_name_1_1_2_1\",\n                                    \"value\": \"header_value_1_1_2_1\"\n                                },\n                                {\n                                    \"name\": \"header_name_1_1_2_2\",\n                                    \"value\": \"header_value_1_1_2_2\"\n                                }\n                            ]\n                        }\n                    ]\n                },\n                {\n                    \"name\": \"method_name_1_2\",\n                    \"method_type\": \"Post\",\n                    \"responses\": [\n                        {\n                            \"is_active\": true,\n                            \"resposnse_status_code\": \"200\",\n                            \"response_body\": \"response_body_1_2_1\",\n                            \"headers\": [\n                                {\n                                    \"name\": \"header_name_1_2_1_1\",\n                                    \"value\": \"header_value_1_2_1_1\"\n                                },\n                                {\n                                    \"name\": \"header_name_1_2_1_2\",\n                                    \"value\": \"header_value_1_2_1_2\"\n                                }\n                            ]\n                        },\n                        {\n                            \"is_active\": true,\n                            \"resposnse_status_code\": \"200\",\n                            \"response_body\": \"response_body_1_2_2\",\n                            \"headers\": [\n                                {\n                                    \"name\": \"header_name_1_2_2_1\",\n                                    \"value\": \"header_value_1_2_2_1\"\n                                },\n                                {\n                                    \"name\": \"header_name_1_2_2_2\",\n                                    \"value\": \"header_value_1_2_2_2\"\n                                }\n                            ]\n                        }\n                    ]\n                }\n            ]\n        },\n        {\n            \"name\": \"api_resources_name_2\",\n            \"url\": \"api_resources_url_2\",\n            \"methods\": [\n                {\n                    \"name\": \"method_name_2_1\",\n                    \"method_type\": \"Post\",\n                    \"responses\": [\n                        {\n                            \"is_active\": true,\n                            \"resposnse_status_code\": \"200\",\n                            \"response_body\": \"response_body_2_1_1\",\n                            \"headers\": [\n                                {\n                                    \"name\": \"header_name_2_1_1_1\",\n                                    \"value\": \"header_value_2_1_1_1\"\n                                },\n                                {\n                                    \"name\": \"header_name_2_1_1_2\",\n                                    \"value\": \"header_value_2_1_1_2\"\n                                }\n                            ]\n                        },\n                        {\n                            \"is_active\": true,\n                            \"resposnse_status_code\": \"200\",\n                            \"response_body\": \"response_body_2_1_2\",\n                            \"headers\": [\n                                {\n                                    \"name\": \"header_name_2_1_2_1\",\n                                    \"value\": \"header_value_2_1_2_1\"\n                                },\n                                {\n                                    \"name\": \"header_name_2_1_2_2\",\n                                    \"value\": \"header_value_2_1_2_2\"\n                                }\n                            ]\n                        }\n                    ]\n                },\n                {\n                    \"name\": \"method_name_2_2\",\n                    \"method_type\": \"Post\",\n                    \"responses\": [\n                        {\n                            \"is_active\": true,\n                            \"resposnse_status_code\": \"200\",\n                            \"response_body\": \"response_body_2_2_1\",\n                            \"headers\": [\n                                {\n                                    \"name\": \"header_name_2_2_1_1\",\n                                    \"value\": \"header_value_2_2_1_1\"\n                                },\n                                {\n                                    \"name\": \"header_name_2_2_1_2\",\n                                    \"value\": \"header_value_2_2_1_2\"\n                                }\n                            ]\n                        },\n                        {\n                            \"is_active\": true,\n                            \"resposnse_status_code\": \"200\",\n                            \"response_body\": \"response_body_2_2_2\",\n                            \"headers\": [\n                                {\n                                    \"name\": \"header_name_2_2_2_1\",\n                                    \"value\": \"header_value_2_2_2_1\"\n                                },\n                                {\n                                    \"name\": \"header_name_2_2_2_2\",\n                                    \"value\": \"header_value_2_2_2_2\"\n                                }\n                            ]\n                        }\n                    ]\n                }\n            ]\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{mockingbirdUrl}}/mockingbird/carriers",
+							"host": [
+								"{{mockingbirdUrl}}"
+							],
+							"path": [
+								"mockingbird",
+								"carriers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetCarriers after import",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"carriertestset available\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"carrier_name_testset\");\r",
+									"});\r",
+									"\r",
+									"var jsonData = pm.response.json();\r",
+									"const carrierEntry = jsonData.find( entry => entry.name === 'carrier_name_testset');\r",
+									"pm.collectionVariables.set(\"carrierId\", carrierEntry.carrier_id);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{mockingbirdUrl}}/mockingbird/carriers",
+							"host": [
+								"{{mockingbirdUrl}}"
+							],
+							"path": [
+								"mockingbird",
+								"carriers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteCarrier",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"carrier was deleted\", function () {\r",
+									"    pm.response.to.have.body(`\"Carrier with ID: '${pm.collectionVariables.get(\"carrierId\")}' has been deleted.\"`);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{mockingbirdUrl}}/mockingbird/carriers?carrierId={{carrierId}}",
+							"host": [
+								"{{mockingbirdUrl}}"
+							],
+							"path": [
+								"mockingbird",
+								"carriers"
+							],
+							"query": [
+								{
+									"key": "carrierId",
+									"value": "{{carrierId}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetCarriers after delete",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"No carriertestset available\", function () {\r",
+									"    pm.expect(pm.response.text()).not.to.include(\"carrier_name_testset\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{mockingbirdUrl}}/mockingbird/carriers",
+							"host": [
+								"{{mockingbirdUrl}}"
+							],
+							"path": [
+								"mockingbird",
+								"carriers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CreateCarrier minimal data",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"carrier_name_testset\",\n    \"nickname\": \"carrier_nickname_testset\",\n    \"options\": [],\n    \"api_resources\": []\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{mockingbirdUrl}}/mockingbird/carriers",
+							"host": [
+								"{{mockingbirdUrl}}"
+							],
+							"path": [
+								"mockingbird",
+								"carriers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetCarriers after minimal data import",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"carriertestset available\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"carrier_name_testset\");\r",
+									"});\r",
+									"\r",
+									"var jsonData = pm.response.json();\r",
+									"const carrierEntry = jsonData.find( entry => entry.name === 'carrier_name_testset');\r",
+									"pm.collectionVariables.set(\"carrierId\", carrierEntry.carrier_id);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{mockingbirdUrl}}/mockingbird/carriers",
+							"host": [
+								"{{mockingbirdUrl}}"
+							],
+							"path": [
+								"mockingbird",
+								"carriers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetCarrier after minimal data import",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"carriertestset available\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"carrier_name_testset\");\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{mockingbirdUrl}}/mockingbird/carriers?carrierId={{carrierId}}",
+							"host": [
+								"{{mockingbirdUrl}}"
+							],
+							"path": [
+								"mockingbird",
+								"carriers"
+							],
+							"query": [
+								{
+									"key": "carrierId",
+									"value": "{{carrierId}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update carrier nickname",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nickname\": \"carrier_nickname_testset_update\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{mockingbirdUrl}}/mockingbird/carriers?carrierId={{carrierId}}",
+							"host": [
+								"{{mockingbirdUrl}}"
+							],
+							"path": [
+								"mockingbird",
+								"carriers"
+							],
+							"query": [
+								{
+									"key": "carrierId",
+									"value": "{{carrierId}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetCarriers after nickname update",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"nickaname changed\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"console.log();\r",
+									"    pm.expect(jsonData[0].nickname).to.equal('carrier_nickname_testset_update');\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{mockingbirdUrl}}/mockingbird/carriers?carrierId={{carrierId}}",
+							"host": [
+								"{{mockingbirdUrl}}"
+							],
+							"path": [
+								"mockingbird",
+								"carriers"
+							],
+							"query": [
+								{
+									"key": "carrierId",
+									"value": "{{carrierId}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "AddOption",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"option_1\",\n    \"value\": \"option_value_1\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{mockingbirdUrl}}/mockingbird/options?carrierId={{carrierId}}",
+							"host": [
+								"{{mockingbirdUrl}}"
+							],
+							"path": [
+								"mockingbird",
+								"options"
+							],
+							"query": [
+								{
+									"key": "carrierId",
+									"value": "{{carrierId}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetOptions",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"option_1 added\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    const optionEntry = jsonData.find( entry => entry.name === 'option_1');\r",
+									"    pm.collectionVariables.set(\"optionId\", optionEntry.option_Id);\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{mockingbirdUrl}}/mockingbird/options?carrierId={{carrierId}}",
+							"host": [
+								"{{mockingbirdUrl}}"
+							],
+							"path": [
+								"mockingbird",
+								"options"
+							],
+							"query": [
+								{
+									"key": "carrierId",
+									"value": "{{carrierId}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add second option",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"option_2\",\n    \"value\": \"option_value_2\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{mockingbirdUrl}}/mockingbird/options?carrierId={{carrierId}}",
+							"host": [
+								"{{mockingbirdUrl}}"
+							],
+							"path": [
+								"mockingbird",
+								"options"
+							],
+							"query": [
+								{
+									"key": "carrierId",
+									"value": "{{carrierId}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetOptions second option",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"option added\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    const optionEntry = jsonData.find( entry => entry.name === 'option_2');\r",
+									"    pm.collectionVariables.set(\"optionId\", optionEntry.option_id);\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{mockingbirdUrl}}/mockingbird/options?carrierId={{carrierId}}",
+							"host": [
+								"{{mockingbirdUrl}}"
+							],
+							"path": [
+								"mockingbird",
+								"options"
+							],
+							"query": [
+								{
+									"key": "carrierId",
+									"value": "{{carrierId}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update second option value",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"value\": \"option_value_2_update\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{mockingbirdUrl}}/mockingbird/options?optionId={{optionId}}",
+							"host": [
+								"{{mockingbirdUrl}}"
+							],
+							"path": [
+								"mockingbird",
+								"options"
+							],
+							"query": [
+								{
+									"key": "optionId",
+									"value": "{{optionId}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetOption after update",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"option updated\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData[0].value).to.equal('option_value_2_update');\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{mockingbirdUrl}}/mockingbird/options?optionId={{optionId}}",
+							"host": [
+								"{{mockingbirdUrl}}"
+							],
+							"path": [
+								"mockingbird",
+								"options"
+							],
+							"query": [
+								{
+									"key": "optionId",
+									"value": "{{optionId}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete second option",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{mockingbirdUrl}}/mockingbird/options?optionId={{optionId}}",
+							"host": [
+								"{{mockingbirdUrl}}"
+							],
+							"path": [
+								"mockingbird",
+								"options"
+							],
+							"query": [
+								{
+									"key": "optionId",
+									"value": "{{optionId}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetOption after delete",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"option was deleted\", function () {\r",
+									"    pm.response.to.have.body(`\"Option not found\"`);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{mockingbirdUrl}}/mockingbird/options?optionId={{optionId}}",
+							"host": [
+								"{{mockingbirdUrl}}"
+							],
+							"path": [
+								"mockingbird",
+								"options"
+							],
+							"query": [
+								{
+									"key": "optionId",
+									"value": "{{optionId}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetOptions after delete",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"only one option available\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.length).to.equal(1);\r",
+									"    const jsonEntry = jsonData.find( entry => entry.name === 'option_1');\r",
+									"    pm.collectionVariables.set(\"optionId\", jsonEntry.option_id);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{mockingbirdUrl}}/mockingbird/options?carrierId={{carrierId}}",
+							"host": [
+								"{{mockingbirdUrl}}"
+							],
+							"path": [
+								"mockingbird",
+								"options"
+							],
+							"query": [
+								{
+									"key": "carrierId",
+									"value": "{{carrierId}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "AddResource",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"api_resources_name_1\",\n    \"url\": \"api_resources_url_1\",\n    \"methods\": []\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{mockingbirdUrl}}/mockingbird/resources?carrierId={{carrierId}}",
+							"host": [
+								"{{mockingbirdUrl}}"
+							],
+							"path": [
+								"mockingbird",
+								"resources"
+							],
+							"query": [
+								{
+									"key": "carrierId",
+									"value": "{{carrierId}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetResources after import",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('api_resource_1 added', function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    const jsonEntry = jsonData.find( entry => entry.name === 'api_resources_name_1');\r",
+									"    pm.expect(jsonEntry[0].name).to.equal('api_resources_name_1');\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{mockingbirdUrl}}/mockingbird/resources?carrierId={{carrierId}}",
+							"host": [
+								"{{mockingbirdUrl}}"
+							],
+							"path": [
+								"mockingbird",
+								"resources"
+							],
+							"query": [
+								{
+									"key": "carrierId",
+									"value": "{{carrierId}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add second resource",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"api_resources_name_2\",\n    \"url\": \"api_resources_url_2\",\n    \"methods\": [\n        {\n            \"name\": \"method_name_2_1\",\n            \"method_type\": \"Post\",\n            \"responses\": [\n                {\n                    \"is_active\": true,\n                    \"resposnse_status_code\": \"200\",\n                    \"response_body\": \"response_body_2_1_1\",\n                    \"headers\": [\n                        {\n                            \"name\": \"header_name_2_1_1_1\",\n                            \"value\": \"header_value_2_1_1_1\"\n                        },\n                        {\n                            \"name\": \"header_name_2_1_1_2\",\n                            \"value\": \"header_value_2_1_1_2\"\n                        }\n                    ]\n                },\n                {\n                    \"is_active\": true,\n                    \"resposnse_status_code\": \"200\",\n                    \"response_body\": \"response_body_2_1_2\",\n                    \"headers\": [\n                        {\n                            \"name\": \"header_name_2_1_2_1\",\n                            \"value\": \"header_value_2_1_2_1\"\n                        },\n                        {\n                            \"name\": \"header_name_2_1_2_2\",\n                            \"value\": \"header_value_2_1_2_2\"\n                        }\n                    ]\n                }\n            ]\n        },\n        {\n            \"name\": \"method_name_2_2\",\n            \"method_type\": \"Post\",\n            \"responses\": [\n                {\n                    \"is_active\": true,\n                    \"resposnse_status_code\": \"200\",\n                    \"response_body\": \"response_body_2_2_1\",\n                    \"headers\": [\n                        {\n                            \"name\": \"header_name_2_2_1_1\",\n                            \"value\": \"header_value_2_2_1_1\"\n                        },\n                        {\n                            \"name\": \"header_name_2_2_1_2\",\n                            \"value\": \"header_value_2_2_1_2\"\n                        }\n                    ]\n                },\n                {\n                    \"is_active\": true,\n                    \"resposnse_status_code\": \"200\",\n                    \"response_body\": \"response_body_2_2_2\",\n                    \"headers\": [\n                        {\n                            \"name\": \"header_name_2_2_2_1\",\n                            \"value\": \"header_value_2_2_2_1\"\n                        },\n                        {\n                            \"name\": \"header_name_2_2_2_2\",\n                            \"value\": \"header_value_2_2_2_2\"\n                        }\n                    ]\n                }\n            ]\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{mockingbirdUrl}}/mockingbird/resources?carrierId={{carrierId}}",
+							"host": [
+								"{{mockingbirdUrl}}"
+							],
+							"path": [
+								"mockingbird",
+								"resources"
+							],
+							"query": [
+								{
+									"key": "carrierId",
+									"value": "{{carrierId}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add second resource Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"api_resources_name_2\",\n    \"url\": \"api_resources_url_2\",\n    \"methods\": [\n        {\n            \"name\": \"method_name_2_1\",\n            \"method_type\": \"Post\",\n            \"responses\": []\n        },\n        {\n            \"name\": \"method_name_2_2\",\n            \"method_type\": \"Post\",\n            \"responses\": []\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{mockingbirdUrl}}/mockingbird/resources?carrierId={{carrierId}}",
+							"host": [
+								"{{mockingbirdUrl}}"
+							],
+							"path": [
+								"mockingbird",
+								"resources"
+							],
+							"query": [
+								{
+									"key": "carrierId",
+									"value": "{{carrierId}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetResources after second import",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"api_resource_2 added\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    const jsonEntry = jsonData.find( entry => entry.name === 'api_resources_name_2');\r",
+									"    pm.expect(jsonEntry.name).to.equal('api_resources_name_2');\r",
+									"    pm.collectionVariables.set(\"apiResourceId\", jsonEntry.api_resource_id);\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{mockingbirdUrl}}/mockingbird/resources?carrierId={{carrierId}}",
+							"host": [
+								"{{mockingbirdUrl}}"
+							],
+							"path": [
+								"mockingbird",
+								"resources"
+							],
+							"query": [
+								{
+									"key": "carrierId",
+									"value": "{{carrierId}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update second resource url",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"url\": \"api_resources_url_2_updated\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{mockingbirdUrl}}/mockingbird/resources?apiResourceId={{apiResourceId}}",
+							"host": [
+								"{{mockingbirdUrl}}"
+							],
+							"path": [
+								"mockingbird",
+								"resources"
+							],
+							"query": [
+								{
+									"key": "apiResourceId",
+									"value": "{{apiResourceId}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetResource after update",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"api_resource_2 added\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    const jsonEntry = jsonData.find( entry => entry.name === 'api_resources_name_2');\r",
+									"    pm.expect(jsonEntry.url).to.equal('api_resources_url_2_updated');\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{mockingbirdUrl}}/mockingbird/resources?apiResourceId={{apiResourceId}}",
+							"host": [
+								"{{mockingbirdUrl}}"
+							],
+							"path": [
+								"mockingbird",
+								"resources"
+							],
+							"query": [
+								{
+									"key": "apiResourceId",
+									"value": "{{apiResourceId}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete second resource",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{mockingbirdUrl}}/mockingbird/resources?apiResourceId={{apiResourceId}}",
+							"host": [
+								"{{mockingbirdUrl}}"
+							],
+							"path": [
+								"mockingbird",
+								"resources"
+							],
+							"query": [
+								{
+									"key": "apiResourceId",
+									"value": "{{apiResourceId}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetResource after delete",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"api resource was deleted\", function () {\r",
+									"    pm.response.to.have.body(`\"ApiResources not found\"`);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{mockingbirdUrl}}/mockingbird/resources?apiResourceId={{apiResourceId}}",
+							"host": [
+								"{{mockingbirdUrl}}"
+							],
+							"path": [
+								"mockingbird",
+								"resources"
+							],
+							"query": [
+								{
+									"key": "apiResourceId",
+									"value": "{{apiResourceId}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetResources after delete",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"only one api resource available\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.length).to.equal(1);\r",
+									"    const jsonEntry = jsonData.find( entry => entry.name === 'api_resources_name_1');\r",
+									"    pm.collectionVariables.set(\"apiResourceId\", jsonEntry.api_resource_id);\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{mockingbirdUrl}}/mockingbird/resources?carrierId={{carrierId}}",
+							"host": [
+								"{{mockingbirdUrl}}"
+							],
+							"path": [
+								"mockingbird",
+								"resources"
+							],
+							"query": [
+								{
+									"key": "carrierId",
+									"value": "{{carrierId}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add first method",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"method_name_1_1\",\n    \"method_type\": \"Post\",\n    \"responses\": []\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{mockingbirdUrl}}/mockingbird/methods?apiResourceId={{apiResourceId}}",
+							"host": [
+								"{{mockingbirdUrl}}"
+							],
+							"path": [
+								"mockingbird",
+								"methods"
+							],
+							"query": [
+								{
+									"key": "apiResourceId",
+									"value": "{{apiResourceId}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetMethods",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"method_1_1 added\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    const jsonEntry = jsonData.find( entry => entry.name === 'method_name_1_1');\r",
+									"    pm.expect(jsonEntry.name).to.equal('method_name_1_1');\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{mockingbirdUrl}}/mockingbird/methods?apiResourceId={{apiResourceId}}",
+							"host": [
+								"{{mockingbirdUrl}}"
+							],
+							"path": [
+								"mockingbird",
+								"methods"
+							],
+							"query": [
+								{
+									"key": "apiResourceId",
+									"value": "{{apiResourceId}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetMethods Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"method_1_1 added\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    const optionEntry = jsonData.find( entry => entry.name === 'method_name_1_1');\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{mockingbirdUrl}}/mockingbird/methods?carrierId={{carrierId}}",
+							"host": [
+								"{{mockingbirdUrl}}"
+							],
+							"path": [
+								"mockingbird",
+								"methods"
+							],
+							"query": [
+								{
+									"key": "carrierId",
+									"value": "{{carrierId}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add second method",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"method_name_1_2\",\n    \"method_type\": \"Post\",\n    \"responses\": [\n        {\n            \"is_active\": true,\n            \"resposnse_status_code\": \"200\",\n            \"response_body\": \"response_body_1_2_1\",\n            \"headers\": [\n                {\n                    \"name\": \"header_name_1_2_1_1\",\n                    \"value\": \"header_value_1_2_1_1\"\n                },\n                {\n                    \"name\": \"header_name_1_2_1_2\",\n                    \"value\": \"header_value_1_2_1_2\"\n                }\n            ]\n        },\n        {\n            \"is_active\": true,\n            \"resposnse_status_code\": \"200\",\n            \"response_body\": \"response_body_1_2_2\",\n            \"headers\": [\n                {\n                    \"name\": \"header_name_1_2_2_1\",\n                    \"value\": \"header_value_1_2_2_1\"\n                },\n                {\n                    \"name\": \"header_name_1_2_2_2\",\n                    \"value\": \"header_value_1_2_2_2\"\n                }\n            ]\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{mockingbirdUrl}}/mockingbird/methods?apiResourceId={{apiResourceId}}",
+							"host": [
+								"{{mockingbirdUrl}}"
+							],
+							"path": [
+								"mockingbird",
+								"methods"
+							],
+							"query": [
+								{
+									"key": "apiResourceId",
+									"value": "{{apiResourceId}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetMethods after second method import",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"method_1_2 added\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    const jsonEntry = jsonData.find( entry => entry.name === 'method_name_1_2');\r",
+									"    pm.expect(jsonEntry.name).to.equal('method_name_1_2');\r",
+									"    pm.collectionVariables.set('methodId', jsonEntry.method_id);\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{mockingbirdUrl}}/mockingbird/methods?carrierId={{carrierId}}",
+							"host": [
+								"{{mockingbirdUrl}}"
+							],
+							"path": [
+								"mockingbird",
+								"methods"
+							],
+							"query": [
+								{
+									"key": "carrierId",
+									"value": "{{carrierId}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update second method type",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"method_name_1_2_update\",\n    \"method_type\": \"post_update\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{mockingbirdUrl}}/mockingbird/methods?methodId={{methodId}}",
+							"host": [
+								"{{mockingbirdUrl}}"
+							],
+							"path": [
+								"mockingbird",
+								"methods"
+							],
+							"query": [
+								{
+									"key": "methodId",
+									"value": "{{methodId}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetMethod after update",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"method_1_2 updated\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    const jsonEntry = jsonData[0];\r",
+									"    pm.expect(jsonEntry.method_type).to.equal('post_update');\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{mockingbirdUrl}}/mockingbird/methods?methodId={{methodId}}",
+							"host": [
+								"{{mockingbirdUrl}}"
+							],
+							"path": [
+								"mockingbird",
+								"methods"
+							],
+							"query": [
+								{
+									"key": "methodId",
+									"value": "{{methodId}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteMethod",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{mockingbirdUrl}}/mockingbird/methods?methodId={{methodId}}",
+							"host": [
+								"{{mockingbirdUrl}}"
+							],
+							"path": [
+								"mockingbird",
+								"methods"
+							],
+							"query": [
+								{
+									"key": "methodId",
+									"value": "{{methodId}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetMethod after delete",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"method was deleted\", function () {\r",
+									"    pm.response.to.have.body(`\"Methods not found\"`);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{mockingbirdUrl}}/mockingbird/methods?methodId={{methodId}}",
+							"host": [
+								"{{mockingbirdUrl}}"
+							],
+							"path": [
+								"mockingbird",
+								"methods"
+							],
+							"query": [
+								{
+									"key": "methodId",
+									"value": "{{methodId}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetMethods after delete",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"only one method available\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.length).to.equal(1);\r",
+									"    const jsonEntry = jsonData.find( entry => entry.name === 'method_name_1_1');\r",
+									"    pm.collectionVariables.set(\"methodId\", jsonEntry.method_id);\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{mockingbirdUrl}}/mockingbird/methods?apiResourceId={{apiResourceId}}",
+							"host": [
+								"{{mockingbirdUrl}}"
+							],
+							"path": [
+								"mockingbird",
+								"methods"
+							],
+							"query": [
+								{
+									"key": "apiResourceId",
+									"value": "{{apiResourceId}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "AddResponse",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"is_active\": true,\n    \"resposnse_status_code\": \"200\",\n    \"response_body\": \"response_body_1_1_1\",\n    \"headers\": [\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{mockingbirdUrl}}/mockingbird/responses?methodId={{methodId}}",
+							"host": [
+								"{{mockingbirdUrl}}"
+							],
+							"path": [
+								"mockingbird",
+								"responses"
+							],
+							"query": [
+								{
+									"key": "methodId",
+									"value": "{{methodId}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetResponses",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"response_1_1_1 added\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    const jsonEntry = jsonData.find( entry => entry.response_body === 'response_body_1_1_1');\r",
+									"    pm.expect(jsonEntry.response_body).to.equal('response_body_1_1_1');\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{mockingbirdUrl}}/mockingbird/responses?methodId={{methodId}}",
+							"host": [
+								"{{mockingbirdUrl}}"
+							],
+							"path": [
+								"mockingbird",
+								"responses"
+							],
+							"query": [
+								{
+									"key": "methodId",
+									"value": "{{methodId}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetResponses Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"response_1_1_1 added\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    const jsonEntry = jsonData.find( entry => entry.response_body === 'response_body_1_1_1');\r",
+									"    pm.expect(jsonEntry.response_body).to.equal('response_body_1_1_1');\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{mockingbirdUrl}}/mockingbird/responses?apiResourceId={{apiResourceId}}",
+							"host": [
+								"{{mockingbirdUrl}}"
+							],
+							"path": [
+								"mockingbird",
+								"responses"
+							],
+							"query": [
+								{
+									"key": "apiResourceId",
+									"value": "{{apiResourceId}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add second response",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"is_active\": true,\n    \"resposnse_status_code\": \"200\",\n    \"response_body\": \"response_body_1_1_2\",\n    \"headers\": [\n        {\n            \"name\": \"header_name_1_1_2_1\",\n            \"value\": \"header_value_1_1_2_1\"\n        },\n        {\n            \"name\": \"header_name_1_1_2_2\",\n            \"value\": \"header_value_1_1_2_2\"\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{mockingbirdUrl}}/mockingbird/responses?methodId={{methodId}}",
+							"host": [
+								"{{mockingbirdUrl}}"
+							],
+							"path": [
+								"mockingbird",
+								"responses"
+							],
+							"query": [
+								{
+									"key": "methodId",
+									"value": "{{methodId}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetResponses after second response",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"response_1_1_2 added\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    const jsonEntry = jsonData.find( entry => entry.response_body === 'response_body_1_1_2');\r",
+									"    pm.expect(jsonEntry.response_body).to.equal('response_body_1_1_2');\r",
+									"    pm.collectionVariables.set('responseId', jsonEntry.response_id);\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{mockingbirdUrl}}/mockingbird/responses?methodId={{methodId}}",
+							"host": [
+								"{{mockingbirdUrl}}"
+							],
+							"path": [
+								"mockingbird",
+								"responses"
+							],
+							"query": [
+								{
+									"key": "methodId",
+									"value": "{{methodId}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update second response",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"is_active\": false,\n    \"response_status_code\": \"401\",\n    \"response_body\": \"response_body_1_1_2_update\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{mockingbirdUrl}}/mockingbird/responses?responseId={{responseId}}",
+							"host": [
+								"{{mockingbirdUrl}}"
+							],
+							"path": [
+								"mockingbird",
+								"responses"
+							],
+							"query": [
+								{
+									"key": "responseId",
+									"value": "{{responseId}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetResponse after update",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"response_1_1_2 updated\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    const jsonEntry = jsonData[0];\r",
+									"    pm.expect(jsonEntry.response_body).to.equal('response_body_1_1_2_update');\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{mockingbirdUrl}}/mockingbird/responses?responseId={{responseId}}",
+							"host": [
+								"{{mockingbirdUrl}}"
+							],
+							"path": [
+								"mockingbird",
+								"responses"
+							],
+							"query": [
+								{
+									"key": "responseId",
+									"value": "{{responseId}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete second response",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"is_active\": false,\n    \"response_status_code\": \"401\",\n    \"response_body\": \"response_body_1_1_2_update\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{mockingbirdUrl}}/mockingbird/responses?responseId={{responseId}}",
+							"host": [
+								"{{mockingbirdUrl}}"
+							],
+							"path": [
+								"mockingbird",
+								"responses"
+							],
+							"query": [
+								{
+									"key": "responseId",
+									"value": "{{responseId}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetResponse after delete",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"response was deleted\", function () {\r",
+									"    pm.response.to.have.body(`\"Responses not found\"`);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{mockingbirdUrl}}/mockingbird/responses?responseId={{responseId}}",
+							"host": [
+								"{{mockingbirdUrl}}"
+							],
+							"path": [
+								"mockingbird",
+								"responses"
+							],
+							"query": [
+								{
+									"key": "responseId",
+									"value": "{{responseId}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetResponses after delete",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"only one response available\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.length).to.equal(1);\r",
+									"    const jsonEntry = jsonData.find( entry => entry.response_body === 'response_body_1_1_1');\r",
+									"    pm.collectionVariables.set(\"responseId\", jsonEntry.response_id);\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{mockingbirdUrl}}/mockingbird/responses?methodId={{methodId}}",
+							"host": [
+								"{{mockingbirdUrl}}"
+							],
+							"path": [
+								"mockingbird",
+								"responses"
+							],
+							"query": [
+								{
+									"key": "methodId",
+									"value": "{{methodId}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add header",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"header_name_1_1_1_1\",\n    \"value\": \"header_value_1_1_1_1\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{mockingbirdUrl}}/mockingbird/headers?responseId={{responseId}}",
+							"host": [
+								"{{mockingbirdUrl}}"
+							],
+							"path": [
+								"mockingbird",
+								"headers"
+							],
+							"query": [
+								{
+									"key": "responseId",
+									"value": "{{responseId}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetHeaders",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"header_1_1_1_1 added\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    const jsonEntry = jsonData.find( entry => entry.name === 'header_name_1_1_2_1');\r",
+									"    pm.expect(jsonEntry.name).to.equal('header_name_1_1_2_1');\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{mockingbirdUrl}}/mockingbird/headers?responseId={{responseId}}",
+							"host": [
+								"{{mockingbirdUrl}}"
+							],
+							"path": [
+								"mockingbird",
+								"headers"
+							],
+							"query": [
+								{
+									"key": "responseId",
+									"value": "{{responseId}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add second header",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"header_name_1_1_1_2\",\n    \"value\": \"header_value_1_1_1_2\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{mockingbirdUrl}}/mockingbird/headers?responseId={{responseId}}",
+							"host": [
+								"{{mockingbirdUrl}}"
+							],
+							"path": [
+								"mockingbird",
+								"headers"
+							],
+							"query": [
+								{
+									"key": "responseId",
+									"value": "{{responseId}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetHeaders after second header import",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"header_1_1_1_2 added\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    const jsonEntry = jsonData.find( entry => entry.name === 'header_name_1_1_2_2');\r",
+									"    pm.expect(jsonEntry.name).to.equal('header_name_1_1_2_2');\r",
+									"    pm.collectionVariables.set('headerId', jsonEntry.header_id);\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{mockingbirdUrl}}/mockingbird/headers?responseId={{responseId}}",
+							"host": [
+								"{{mockingbirdUrl}}"
+							],
+							"path": [
+								"mockingbird",
+								"headers"
+							],
+							"query": [
+								{
+									"key": "responseId",
+									"value": "{{responseId}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update header",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"value\": \"header_value_1_1_1_2_updated\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{mockingbirdUrl}}/mockingbird/headers?headerId={{headerId}}",
+							"host": [
+								"{{mockingbirdUrl}}"
+							],
+							"path": [
+								"mockingbird",
+								"headers"
+							],
+							"query": [
+								{
+									"key": "headerId",
+									"value": "{{headerId}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetHeader after update",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"header_1_1_1_2 updated\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    const jsonEntry = jsonData.find( entry => entry.value === 'header_value_1_1_1_2_updated');\r",
+									"    pm.expect(jsonEntry.value).to.equal('header_value_1_1_1_2_updated');\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{mockingbirdUrl}}/mockingbird/headers?headerId={{headerId}}",
+							"host": [
+								"{{mockingbirdUrl}}"
+							],
+							"path": [
+								"mockingbird",
+								"headers"
+							],
+							"query": [
+								{
+									"key": "headerId",
+									"value": "{{headerId}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete header",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{mockingbirdUrl}}/mockingbird/headers?headerId={{headerId}}",
+							"host": [
+								"{{mockingbirdUrl}}"
+							],
+							"path": [
+								"mockingbird",
+								"headers"
+							],
+							"query": [
+								{
+									"key": "headerId",
+									"value": "{{headerId}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetHeader after delete",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"header was deleted\", function () {\r",
+									"    pm.response.to.have.body(`\"Headers not found\"`);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{mockingbirdUrl}}/mockingbird/headers?headerId={{headerId}}",
+							"host": [
+								"{{mockingbirdUrl}}"
+							],
+							"path": [
+								"mockingbird",
+								"headers"
+							],
+							"query": [
+								{
+									"key": "headerId",
+									"value": "{{headerId}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetHeaders after delete",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"only one header available\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.length).to.equal(1);\r",
+									"    const jsonEntry = jsonData.find( entry => entry.name === 'header_name_1_1_2_1');\r",
+									"    pm.collectionVariables.set(\"headerId\", jsonEntry.header_id);\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{mockingbirdUrl}}/mockingbird/headers?responseId={{responseId}}",
+							"host": [
+								"{{mockingbirdUrl}}"
+							],
+							"path": [
+								"mockingbird",
+								"headers"
+							],
+							"query": [
+								{
+									"key": "responseId",
+									"value": "{{responseId}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete carrier",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"carrier was deleted\", function () {\r",
+									"    pm.response.to.have.body(`\"Carrier with ID: '${pm.collectionVariables.get(\"carrierId\")}' has been deleted.\"`);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{mockingbirdUrl}}/mockingbird/carriers?carrierId={{carrierId}}",
+							"host": [
+								"{{mockingbirdUrl}}"
+							],
+							"path": [
+								"mockingbird",
+								"carriers"
+							],
+							"query": [
+								{
+									"key": "carrierId",
+									"value": "{{carrierId}}"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "mockingbirdUrl",
+			"value": "http://localhost:8080",
+			"type": "string"
+		},
+		{
+			"key": "carrierId",
+			"value": "11",
+			"type": "string"
+		},
+		{
+			"key": "resourceId",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "optionId",
+			"value": ""
+		},
+		{
+			"key": "apiResourceId",
+			"value": ""
+		},
+		{
+			"key": "methodId",
+			"value": ""
+		},
+		{
+			"key": "responseId",
+			"value": ""
+		},
+		{
+			"key": "headerId",
+			"value": ""
+		}
+	]
+}
